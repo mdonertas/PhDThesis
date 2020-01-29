@@ -1,17 +1,25 @@
 # Drug Repurposing for Ageing
 
-<!-- ## Introduction -->
+\small
+**Declaration**
+
+\noindent
+*This work includes results that I have published as a research artcile in Aging Cell [@Donertas2018]. All the results presented in this chapter are products of my own work. I have conceived the study and performed all the analysis presented here. I must acknowledge the contributions of Matias Fuentealba, Linda Partridge, and my supervisor, Janet M Thornton. Their suggestions helped design this work better and improved it significantly. I also benefited from another article we have published as a review article in Trends in Endocrinology and Metabolism [@Donertas2019]. The summary of existing drug repurposing studies in the introduction of this chapter stems from this article, and Matias Fuentealba had a significant contribution in compiling and reviewing these existing studies. The analysis of different studies, investigating their coverage and comparison is a product of my own work, but again benefits from our discussions with Matias. This work was also supervised by Linda Partridge and Janet M Thornton.*
+\normalsize
+
+## Introduction
 
 <!-- ### Summary of experimental studies showing ageing is malleable -->
 
 <!-- ### Computational drug repurposing studies for ageing (and methods) -->
+
 <!-- ### Research objectives -->
 
 <!-- ## Methods -->
 
 <!-- ## Results -->
 
-<!-- ### Analysis of age‐related gene expression changes in human brains -->
+<!-- ### Analysis of age-related gene expression changes in human brains -->
 
 <!-- ### Defining the ageing signature -->
 
