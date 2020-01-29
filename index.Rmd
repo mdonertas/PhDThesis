@@ -1,0 +1,52 @@
+--- 
+title: "Ageing and Age-related Diseases"
+subtitle: ""
+author: "Handan Melike Dönertaş"
+degreedate: "April 2020"
+description: ""
+documentclass: unicam
+fontsize: 12pt
+papersize: a4
+classoption: twosided
+geometry: "left=37mm, right=30mm, top=35mm, bottom=30mm"
+linestretch: 1.5
+toc-depth: 2
+lof: True
+lot: True
+crest: logo.jpg
+mainfont: Helvetica
+degreetitle: Philosophy of Science
+college: Darwin College
+dept: European Molecular Biology Laboratory,
+  European Bioinformatics Institute
+university: University of Cambridge
+dedication: This is my dedication
+acknowledgements: |
+  `r if(knitr:::is_latex_output()) paste(readLines("acknowledgements.txt"), collapse = '\n  ')`
+declaration:  |
+  `r if(knitr:::is_latex_output()) paste(readLines("declaration.txt"), collapse = '\n  ')`
+abstract: | 
+  `r if(knitr:::is_latex_output()) paste(readLines("abstract.txt"), collapse = '\n  ')`
+site: bookdown::bookdown_site
+bibliography: [book.bib]
+biblio-style: apa.csl
+link-citations: yes
+---
+
+# Introduction
+
+```{r include_packages, include = FALSE}
+# This chunk ensures that the thesisdown package is
+# installed and loaded. This thesisdown package includes
+# the template files for the thesis.
+if(!require(devtools))
+  install.packages("devtools", repos = "http://cran.rstudio.com")
+if(!require(thesisdown))
+  devtools::install_github("ismayc/thesisdown")
+if(!require(knitr))
+  install.packages('knitr')
+library(thesisdown)
+library(knitr)
+```
+
+<!-- to have the nomencl go to terminal and run: makeindex thesis.nlo -s nomencl.ist -o thesis.nls -->

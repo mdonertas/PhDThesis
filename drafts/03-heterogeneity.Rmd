@@ -1,0 +1,47 @@
+# Gene expression heterogeneity in ageing
+
+<!-- ## Introduction -->
+
+<!-- ### Gene expression heterogeneity -->
+
+<!-- ### Heterogeneity and ageing -->
+
+<!-- #### Phenotype -->
+
+<!-- #### Epigenetics -->
+
+<!-- ### Change in transcriptome heterogeneity with age -->
+
+<!-- #### Single-cell studies -->
+
+<!-- ### Research Objectives -->
+
+<!-- ## Methods -->
+
+<!-- ## Results -->
+
+<!-- ### Different methods & preprocessing and their effect on heterogeneity -->
+
+<!-- ### Age-related change in gene expression heterogeneity in the human brain during development vs. ageing -->
+
+<!-- ### Trajectories of the change in ageing-related heterogeneity -->
+
+<!-- ### Biological functions associated with the change in heterogeneity during ageing -->
+
+<!-- ### Trans-regulators of expression and heterogeneity in ageing -->
+
+<!-- ## Discussion -->
+
+<!-- ### Preprocessing and heterogeneity  -->
+
+<!-- ### Heterogeneity change with age vs. ageing -->
+
+<!-- ### Power of meta-analysis to detect subtle changes in heterogeneity -->
+
+<!-- ### Interindividual vs intercellular heterogeneity -->
+
+<!-- #### Potential contributors to both -->
+
+<!-- ### Limitations in this work -->
+
+<!-- ## Future Perspectives -->

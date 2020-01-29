@@ -1,0 +1,42 @@
+# Drug Repurposing for Ageing
+
+<!-- ## Introduction -->
+
+<!-- ### Summary of experimental studies showing ageing is malleable -->
+
+<!-- ### Computational drug repurposing studies for ageing (and methods) -->
+<!-- ### Research objectives -->
+
+<!-- ## Methods -->
+
+<!-- ## Results -->
+
+<!-- ### Analysis of age‐related gene expression changes in human brains -->
+
+<!-- ### Defining the ageing signature -->
+
+<!-- ### Ageing signature in other tissues -->
+
+<!-- ### Biological processes associated with the ageing signature -->
+
+<!-- ### Identifying drugs that can mimic or reverse the ageing signature -->
+
+<!-- #### Targets of the hits -->
+
+<!-- #### Biological functions perturbed by the hits -->
+
+<!-- ### Comparison of hits with other computational studies and databases of ageing -->
+
+<!-- ## Discussion -->
+
+<!-- ### Ageing signature and the biological relevance -->
+
+<!-- ### Using gene expression to repurpose drugs -->
+
+<!-- ### Identified drugs and their mechanisms of action (if known) -->
+
+<!-- ### Causes and responses to ageing -->
+
+<!-- ### Limitations in this work -->
+
+<!-- ## Future Perspectives -->

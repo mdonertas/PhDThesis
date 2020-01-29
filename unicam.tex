@@ -1,0 +1,178 @@
+\documentclass[12pt,twoside]{unicam}
+% \usepackage{graphicx,latexsym}
+% \usepackage{amsmath}
+% \usepackage{amssymb,amsthm}
+\usepackage{longtable,booktabs,setspace}
+% \usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
+% \usepackage[hyphens]{url}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{rotating}
+% Next line commented out by CII
+% \usepackage{natbib}
+% Comment out the natbib line above and uncomment the following two lines to use the new
+% biblatex-chicago style, for Chicago A. Also make some changes at the end where the
+% bibliography is included.
+% \usepackage{biblatex-chicago}
+% \bibliography{thesis}
+% Use ref for internal links
+\renewcommand{\hyperref}[2][???]{\autoref{#1}}
+\def\chapterautorefname{Chapter}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\usepackage{caption}
+\captionsetup{width=5in}
+$if(highlighting-macros)$
+  $highlighting-macros$
+$endif$
+% To pass between YAML and LaTeX the dollar signs are added by CII
+\title{$title$}
+\author{$author$}
+\subtitle{$subtitle$}
+\college{$college$}
+\date{$date$}
+\degreedate{$degreedate$}
+\advisor{$advisor$}
+\university{$university$}
+\degreetitle{$degreetitle$}
+$if(crest)$
+\crest{\includegraphics[width=30mm]{$crest$}}
+$endif$
+$if(altadvisor)$
+\altadvisor{$altadvisor$}
+$endif$
+\dept{$dept$}
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\renewcommand{\contentsname}{Table of Contents}
+\setlength{\parskip}{0pt}
+$if(space_between_paragraphs)$
+  %\setlength{\parskip}{\baselineskip}
+  \usepackage[parfill]{parskip}
+$endif$
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\Acknowledgements{
+$acknowledgements$
+}
+
+\Dedication{
+$dedication$
+}
+
+\Declaration{
+$declaration$
+}
+
+\Preface{
+$preface$
+}
+
+\Abstract{
+$abstract$
+}
+
+$for(header-includes)$
+	$header-includes$
+$endfor$
+
+\renewcommand{\bibname}{References}
+\usepackage{enumitem}
+\setlist[enumerate,itemize,description]{topsep=0em}
+\RequirePackage[labelsep=space,tableposition=top]{caption}
+\renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
+\usepackage{booktabs}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+\begin{document}
+
+% Everything below added by CII
+$if(title)$
+  \maketitle
+$endif$
+
+\frontmatter % this stuff will be roman-numbered
+\pagestyle{empty} % this removes page numbers from the frontmatter
+
+$if(dedication)$
+  \begin{dedication}
+    $dedication$
+  \end{dedication}
+$endif$
+
+$if(declaration)$
+  \begin{declaration}
+    $declaration$
+  \end{declaration}
+$endif$
+
+$if(acknowledgements)$
+  \begin{acknowledgements}
+    $acknowledgements$
+  \end{acknowledgements}
+$endif$
+
+$if(preface)$
+  \begin{preface}
+    $preface$
+  \end{preface}
+$endif$
+
+$if(abstract)$
+  \begin{abstract}
+    $abstract$
+  \end{abstract}
+$endif$
+
+$if(toc)$
+  \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+  \setcounter{tocdepth}{$toc-depth$}
+  \tableofcontents
+$endif$
+
+$if(lot)$
+  \listoftables
+$endif$
+
+$if(lof)$
+  \listoffigures
+$endif$
+
+\printnomenclature
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
+
+\mainmatter % here the regular arabic numbering starts
+\pagestyle{fancyplain} % turns page numbering back on
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+}
+$body$
+
+\end{document}
+
