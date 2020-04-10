@@ -1,0 +1,435 @@
+`r if(knitr:::is_latex_output()) '\\appendix'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'` 
+
+# Supplementary Materials and Methods
+
+## Age-related changes in gene expression heterogeneity in the human brain
+
+### Comparison of different methods to measure the change in gene expression heterogeneity with age {#veronikaMethods}
+
+#### Data processing steps
+**Dataset Selection:** We utilized one of the largest age-series human brain expression datasets, featuring 269 prefrontal cortex samples from healthy individuals and spanning the whole lifespan from development (prenatal samples) through ageing (80 years) [@Colantuoni2011]. These data were collected using microarray technology from people of both sexes and 4 races, namely African American (AA), Caucasian (CAUC), Hispanic (HISP) and Asian (AS). In the current analysis, we excluded fetal, childhood and early adulthood samples before the age of 20, thus limiting our sample size to 147. This was to exclude developmental processes taking place in the brain until the end of early adulthood, which exhibit discontinuous expression changes between early adulthood and ageing [@Donertas2017]. Our main motivation was to study changes in gene expression variability during ageing, considering 20 years old as a starting point.
+
+**Data Characterization:** The pre-processed data (loess normalization was applied on the background corrected log2 intensity ratios (sample/reference)[@Colantuoni2011]); sample and gene (probe set to Entrez gene mapping) annotations were obtained from the NCBI Gene Expression Omnibus (GEO) at accession number GSE30272. Samples were processed in 19 batches, had different quality measurements, namely pH and RNA integrity number (RIN), and differed in the time of collection after death (post-mortem interval (PMI)). Using a PCA, we found no sample outliers as judged by visual inspection of the first two principal components. However, the relationship analysis between the above-mentioned factors (*i.e.* batch, RIN, PMI and others) and age yielded significant correlations for sex, post-mortem interval and RNA integrity, pointing to potential confounders in the data. We further checked the overlap between significantly differentially variable genes in our analysis and previously reported genes that are affected by PMI and detected only a limited overlap.
+
+**Probe set to gene summarization:** If one probe-set was mapped to several genes, it was deleted to avoid duplication. Conversely, when one gene had several probe-set expression values, they were averaged to obtain a unique gene expression value. In total 16675 genes were measured on the array.
+Batch correction: To compensate for technical variation between samples, quantile normalization (QN) was performed using the ‘normalise.quantiles’ function from the ‘preprocessCore’ R library. To differentiate between the age effect and the effect of the unwanted technical and biological variability, we have applied different expression correction strategies: linear regression of the known covariates, unsupervised estimation of covariates using surrogate variable analysis (SVA) [@Leek2007]. As a result, we analyzed the same data two times, corrected using QN+regression and QN+SVA. Different corrections work by adjusting for the different covariates in the linear model that explains the gene expression, namely: i) QN – no covariates were added; ii) QN+regression – 25 covariates considered: technical batches (N = 19), sex (N=2), race (N=4), post-mortem interval, RNA integrity number,pH; iii) QN + SVA – 20 surrogate variables (SV) were inferred from the expression data using the ‘sva’ function from “SVA” R library [@svapack].
+
+#### Differential variability
+
+**The continuous approach:** First, a linear model to fit gene expression during ageing, using $age^{0.25}$ and potential confounders, was constructed. Next, the Spearman correlation was calculated between the absolute values of the residuals, $|\epsilon_i|$ from the linear model and age. Consequently, Spearman correlation estimates were used as a measure of the change in variability, referred as $\Delta var_i(\rho)$. p values for the Spearman correlation estimates were corrected for multiple testing using FDR. FDR adjusted p ≤ 0.05 was used as a threshold to define significantly DV genes.
+
+$$\Delta var_i(\rho)=\rho(|\epsilon_i,age|)$$
+
+**The grouped approach:** First, a corrected expression matrix was obtained by removing the effect of covariates (see data processing steps) from the data using the residuals from a linear regression model. The 'grouped approach' is a custom resampling-based test designed to compare gene expression variability between young (20 – 40 years old) and old (60-80 years old) groups using an interquartile range (IQR). IQR corresponds to the difference between the 75th and 25th percentiles of the distribution and is considered to be a robust measure of variability, meaning it is not susceptible to outliers and departure from normality in the data. In order to adjust for the unequal sample size of the young (N = 53) and old (N = 22) groups, we, first, calculated a null distribution of the IQR values for the young group by resampling it 10,000 times with the size of the old group. Next, we calculated significance as a percentage of samples where $IQR_{old}$ was more extreme than $IQR_{young}$ and corrected it for multiple testing using FDR correction, q ≤ 0.05. The ‘grouped’ measure of change in the variability, $\Delta var_i(IQR)$, for the gene i, corresponds to the difference between IQR value for the old, $IQR_{i,old}$ , and $\overline{IQR_{i,young}}$ (*i.e.* mean IQR value from the young distribution), which is then divided by the latter, see formula:
+
+$$\Delta var_i(IQR) = \dfrac{IQR_{i,old} - \overline{IQR_{i,young}}}{\overline{IQR_{i,young}}}$$
+
+#### Gene Set Enrichment Analysis for KEGG pathways
+$\Delta var$ measures from the differential variability analyses were used to perform gene set enrichment analysis, GSEA [@Subramanian2005] using the “clusterProfiler” R library [@Yu2012]. 315 KEGG pathways with the size of between 10 and 500 genes were considered as gene sets for the GSEA.
+
+#### Heterogeneity Distributions in Pathways
+
+KEGG pathway to gene mapping was obtained from “KEGGREST” R library and pathways were pre-filtered to contain between 5 and 500 genes. As a result, 310 KEGG pathways that comprise 5922 unique genes were used for the subsequent analysis. The boxplots illustrated distributions of the $\Delta var$ measure for genes in each pathway. Pathways were sorted according to their median $\Delta var$ measure in ascending order. The percentage of pathways that have their median $\Delta var$ above zero was calculated.
+
+#### Distribution tests
+Distributions of the $\Delta var$ - measures for all the genes were tested for normality using the Shapiro-Wilk test in R (‘Shapiro.test’ function) on the multiple subsamples, consisting of 5000 measures. Skewness of the distributions was calculated using the ‘fBasics’ function from “BasicStatistics” R library.
+
+### Temporal landscape of the changes in gene expression heterogeneity during brain development and ageing {#hetMethods}
+
+#### Dataset collection {#hetDatasets}
+
+In this study, we performed re-analysis of publicly available transcriptome datasets to test age-related change in gene expression heterogeneity. All data collection in these previous studies were performed in accordance with relevant guidelines, regulations and approved experimental protocols, including informed consents for the use of samples for research from all donors or their next of kin.
+
+**Microarray datasets:** Raw data used in this study were retrieved from the NCBI Gene Expression Omnibus (GEO) from three different sources (Supplementary Table S1). All three datasets consist of human brain gene expression data generated on microarray platforms. In total, we obtained 1017 samples from 298 individuals, spanning the whole lifespan with ages ranging from 0 to 98 years (Figure \@ref(fig:hetFigS1)).
+
+**RNA sequencing dataset:** We used the transcriptome data generated by the GTEx Consortium (v6p) [@Ardlie2015]. We only used the samples with a death circumstance of 1 (violent and fast deaths due to an accident) and 2 (fast death of natural causes) on the Hardy Scale excluding individuals who died of illnesses. As we focus only on the brain, we used all 13 brain tissue data in GTEx. We thus analyzed 623 samples obtained from 99 individuals.
+
+**Separating datasets into development and ageing datasets:** To differentiate changes in gene expression heterogeneity during ageing from those during development, we used the age of 20 to separate pre-adulthood from adulthood. It was shown that the age of 20 corresponds to the first age of reproduction in human societies [@Walker2006]. Structural changes after the age of 20 in the human brain were previously linked to age-related phenotypes, specifically neuronal shrinkage and a decline in total length of myelinated fibers [@Sowell2004]. Earlier studies examining age-related gene expression changes in different brain regions also showed a global change in gene expression patterns after the age of 20 [@Somel2010; @Donertas2017; @Colantuoni2011]. Thus, consistent with these studies, we separated datasets using the age of 20 into development (0 to 20 years of age, n = 441) and ageing (20 to 98 years of age, n = 569).
+
+#### Preprocessing
+
+**Microarray datasets:** RMA correction (using the ‘oligo’ library in R) [@Carvalho2010] and log2 transformation were applied to Somel2011 and Kang2011 datasets. For the Colantuoni2011 dataset, as there was no public R package to analyze the raw data, we used the preprocessed data deposited in GEO, which had been loess normalized by the authors. We quantile normalized all datasets using the ‘preprocessCore’ library in R [@Bolstad2019].  Notably, our analysis focused on consistent patterns across datasets, instead of considering significant changes within individual datasets. Since we don’t expect random confounding factors to be shared among datasets, we used quantile normalization to minimize the effects of confounders, and we treated consistent results as potentially a biological signal. We also applied an additional correction procedure for Somel2011 datasets, in which there was a batch effect influencing the expression levels, as follows: for each probeset (1) calculate mean expression (M), (2) scale each batch separately (to mean = 0, standard deviation = 1), (3) add M to each value. We excluded outliers given in Supplementary Table S1, through a visual inspection of the first two principal components for the probeset expression levels as in @Donertas2017 and @Donertas2018. We mapped probeset IDs to Ensembl gene IDs 1) using the Ensembl database, through the ‘biomaRt’ library [@Durinck2009] in R for the Somel2011 dataset, 2) using the GPL file deposited in GEO for Kang2011, as probeset IDs for this dataset were not complete in Ensembl, and 3) using the Entrez gene IDs in the GPL file deposited in GEO for the Colantuoni2011 dataset and converting them into Ensembl gene IDs using the Ensembl database, through the “biomaRt” library in R. Lastly, we scaled expression levels for genes (to mean = 0, standard deviation = 1) using the ‘scale’ function in R. Age values of individuals in each dataset were converted to the fourth root of age (in days) to have a linear relationship between age and expression both in development and ageing. However, we repeated the analysis using different age scales and confirmed that the results were quantitatively similar (Figure \@ref(fig:hetFigS3)).
+
+**RNA sequencing dataset:** The genes with median RPKM value of 0 were excluded from the dataset. The RPKM values provided in the GTEx data were log2 transformed and quantile-normalized. Similar to the microarray data, we excluded the outliers based on the visual inspection of the first and second principal components (Supplementary Table S1). In GTEx, ages are given as 10 year intervals. We therefore used the middle point of these age intervals to represent that individual’s age.
+
+#### Age-related expression change
+
+We used linear regression to assess the relationship between age and gene expression. The model used in the analysis is:
+
+\begin{equation}
+    Y_i = \beta_{i_0} + \beta_{i_1}*Age^{1/4} + \epsilon_i
+  (\#eq:heteq1)
+\end{equation}
+
+where $Y_i$ is the scaled log2 expression level for the $i^{th}$ gene, $\beta_{i_0}$ is the intercept, $\beta_{i_1}$ is the slope, and $\epsilon_i$ is the residual. We performed the analysis for each dataset (development and ageing datasets separately) and considered the $\beta_1$ value as a measure of change in expression. p-values obtained from the model were corrected for multiple testing according to Benjamini and Hochberg procedure [@Benjamini1995] by using ‘p.adjust’ function in R.
+
+#### Age-related heterogeneity change
+
+In order to quantify the age-related change in gene expression heterogeneity, we calculated Spearman’s correlation coefficient ($\rho$). The correlations were calculated between the absolute values of residuals obtained from equation \@ref(eq:heteq1) and the fourth root of individual age. We regarded the absolute values of residuals as a measure of heterogeneity. Therefore, high positive correlation coefficients suggest that heterogeneity increases with age, whereas strong negative correlation implies heterogeneity decreases with age. p-values were calculated from the correlation analysis and corrected for multiple testing with the Benjamini and Hochberg method using the ‘p.adjust’ function in R.
+We further confirmed our results using a different measure of heterogeneity, Breusch-Pagan test, implemented as “ncvTest” function in the “car” package in R [@Fox2019] (Figure \@ref(fig:hetFigS32)).
+
+
+#### Principal Component Analysis
+
+We conducted principal component analysis on both age-related changes in expression ($\beta$) and heterogeneity ($\rho$).We followed a similar procedure for both analyses, in which we used the ‘prcomp’ function in R.  The analysis was performed on a matrix containing $\beta$ values (for the change in expression level) and $\rho$ values (for the change in heterogeneity), for 11,137 commonly expressed genes for all 38 development and ageing datasets. In each dataset, the estimates of expression change ($\beta$) or heterogeneity change ($\rho$) values were scaled for each dataset before calculating principal components.
+
+#### Permutation test
+
+We used a permutation scheme that we developed earlier [@Donertas2017; @Donertas2018], taking into account that samples across Somel2011 and Kang2011 datasets are not independent (*i.e.* these datasets include multiple samples from the same individuals for different brain regions). Specifically, we first randomly permuted ages among individuals, not samples, for 1,000 times in each data source, using the ‘sample’ function in R. Next, we assigned ages of individuals to their corresponding samples, making sure that multiple samples from the same individual annotated with the same age, retaining the dependency between datasets. Then, we calculated age-related expression and heterogeneity change for each dataset, using permuted ages. For the tests related to the changes in gene expression with age, we used a linear model between gene expression levels and the randomized ages. In contrast, for the tests related to the changes in heterogeneity with age, we measured the correlation between the randomized ages and the absolute value of residuals from the linear model that we obtained from equation \@ref(eq:heteq1) using non-randomized ages for each gene. In this way, we preserved the relationship between age and expression, and we were able to ensure that our regression model was appropriate for calculating age-related heterogeneity change [@Somel2006]. Using expression and heterogeneity change estimates calculated using permuted ages, we tested (a) if the correlation of expression (and heterogeneity) change in ageing is higher than in development datasets; (b) if the correlations of expression (and heterogeneity) change in development and in ageing datasets are significantly higher than null expectation; (c) if the number of genes showing significant change in expression (and heterogeneity) is significantly higher in ageing than in development datasets; (d) if the overall increase in age-related heterogeneity during ageing is significantly higher than development; (e) if the observed consistency in heterogeneity increase is significantly different from expected. All tests using permuted ages were performed one-tailed. We also demonstrate that our permutation strategy is more stringent than random permutations in Figure \@ref(fig:hetFigS10), giving the distributions calculated using both dependent permutations and random permutations.
+
+To test the overall correlation within development or ageing datasets for the changes in expression ($\beta$) and heterogeneity ($\rho$), we calculated median correlations among independent three subsets of datasets (one Kang2011, one Somel2011 and the Colantuoni2011 dataset), taking the median value calculated for each possible combination of independent subsets (16 x 2 x 1 = 32 combinations). Using 1,000 permutations of individuals’ ages, we generated an expected distribution for the median correlation coefficient for triples and compared these with the observed values, asking how many times we observe a higher value. We used this approach to calculate expected median correlation among development (and ageing) datasets, because the number of independent pairwise comparisons are outnumbered by the number of dependent pairwise comparisons, causing low statistical power.
+
+To further test the significance of the difference between correlations among development and ageing datasets, we calculated the median difference in correlations between ageing and development datasets for each permutation. We next constructed the null distribution of 1,000 median differences and calculated empirical p-values compering the observed differences with these null distributions. Next, to test the significance of the difference in the number of significantly changing genes between development and ageing, we calculated the difference in the number of genes showing significant change between development and ageing datasets for each permutation. Empirical p-values were computed according to observed differences. Likewise, to test if the overall increase in age-related heterogeneity during ageing is significant compared to development, we computed median differences between median heterogeneity change values of each ageing and development dataset, for each permutation, followed by an empirical p-value calculation to answer if the ageing datasets have a higher increase in age-related heterogeneity.
+
+#### Expected heterogeneity consistency
+
+Expected consistency in heterogeneity change was calculated from heterogeneity change values ($\rho$) measured using permuted ages. For each permutation, we first calculated the total number of genes showing consistent heterogeneity increase for N number of datasets (N = 0, ..., 19). To test if observed consistency significantly differed from the expected, we compared observed consistency values to the distribution of expected numbers, by performing a one-sided test for the consistency in N number of datasets, N = 1, …, 19.
+
+#### Clustering
+
+We used the k-means algorithm (‘kmeans’ function in R) to cluster genes showing consistent heterogeneity change (n=147) according to their heterogeneity profiles. We first took the subset of the heterogeneity levels (absolute value of the residuals from equation \@ref(eq:heteq1)) to include only the genes that show a consistent increase with age and then scaled the heterogeneity levels to the same mean and standard deviation. Since the number of samples in each dataset is different, just running k-means on the combined dataset would not equally represent all datasets. Thus, we first calculated the spline curves for scaled heterogeneity levels for each gene in each dataset (using the ‘smooth.spline’ function in R, with three degrees of freedom). We interpolated at 11 (the smallest sample size) equally distant age points within each dataset. Then we used the combined interpolated values to run the k-means algorithm with k = 8, a liberal choice, given the total number of genes being 147.
+
+To test association of the clusters with Alzheimer’s Disease, we retrieved overall AD association scores of the 147 consistent genes (n = 40) from the Open Targets Platform [@Carvalho-Silva2019].
+
+#### Functional Analysis
+
+We used the "clusterProfiler" package in R to run Gene Set Enrichment Analysis, using Gene Ontology (GO) Biological Process (BP), GO Molecular Function (MF), GO Cellular Compartment (CC), Reactome, Disease Ontology (DO), and KEGG Pathways. We used Normalized Enrichment Scores (NES) from ClusterProfiler package, which gives a weighted Kolmogorov-Smirnov test statistic divided by the mean of KS statistics obtained from random permutations. We performed GSEA on all gene sets with a size between 5 and 500, and we corrected the resulting p-values with the Benjamini and Hochberg correction method. To test if the genes with a consistent increase or decrease in their expression are associated with specific functions, we used the number of datasets with a consistent increase to run GSEA. Since we are running GSEA using number of datasets showing consistency, our data includes many ties, potentially making the ranking ambiguous and non-robust. In order to assess how robust our results are, we ran GSEA 1,000 times on the same data and counted how many times we observed the same set of KEGG pathways as significant (Supplementary Table S3). The lowest number among the pathways with a significant positive enrichment score was 962 out of 1,000 (Phospholipase D signaling pathway). Moreover, we repeated the same analysis using the heterogeneity change levels ($\rho$), instead of using the number of datasets with a consistent change, for each dataset to confirm the gene sets are indeed associated with the increase or decrease in heterogeneity
+<!-- (Figures \@ref(fig:hetFigS15),\@ref(fig:hetFigS16),\@ref(fig:hetFigS17),\@ref(fig:hetFigS18),\@ref(fig:hetFigS19)) -->
+. We visualized the KEGG pathways using ‘KEGGgraph’ library in R and colored the genes by the number of datasets that show an increase.
+
+We also performed an enrichment analysis of the transcription factors and miRNA to test if specific TFs or miRNAs regulate the genes that become more heterogeneous consistently. We collected gene-regulator association information using the Harmonizome database [@Rouillard2016], “MiRTarBase microRNA Targets” (12086 genes, 596 miRNAs) and “TRANSFAC Curated Transcription Factor Targets” (13216 genes, 201 TFs) sets. We used the ‘fgsea’ package in R, which allows GSEA on a custom gene set. We tested the association for each regulator with at least 10 and at most 500 targets. Moreover, we tested if the number of regulators is associated with the change in heterogeneity. We first calculated the correlation between heterogeneity change with age (or the number of datasets with an increase in expression heterogeneity) and the number of TFs or miRNAs regulating that gene, for ageing and development separately. We repeated the analysis while accounting for the direction of expression changes in these periods (*i.e.* separating genes into down-down, down-up, up-down, and up-up categories based on their expression in development and ageing, Supplementary Figure \@ref(fig:hetFigS21)). To test the difference in the correlations between ageing and development, we used 1,000 random permutations of the number of TFs. For each permutation, we randomized the number of TFs and calculated the correlation between heterogeneity change (or the number of datasets with an increase in heterogeneity) and the randomized numbers. We then calculated the percentage of datasets where ageing has a higher correlation than development. Using the distribution of percentages, we tested if the observed value is expected by chance.
+
+#### Protein-protein interaction network analysis
+
+We downloaded all human protein interaction data from the STRING database (v11) [@VonMering2005]. Ensembl Peptide IDs are mapped to Ensembl Gene IDs using the “biomaRt” package in R. Here we aimed to test whether genes showing consistent increase in heterogeneity have a different number of interactors than other genes. For this we calculated the degree distributions for the genes that become consistently more heterogeneous with age and all remaining genes using different cutoffs for interaction confidence scores. In order to calculate the significance of the difference, we i) calculated the number of interactors (degree) for each gene, ii) for 10,000 times, randomly sampled k genes from all interactome data (k = number of genes that become heterogeneous with age across all datasets and have interaction information in STRING database, after filtering for a cutoff), iii) calculated the median of degree for each sample. We then calculated an empirical p-value by asking how many of these 10,000 samples we see a median degree that is equivalent to or higher than our original value. The number of genes and interactions after each cutoff are given in Figure \@ref(fig:hetFigS22).
+
+#### Cell-type specificity analysis
+
+Using FACS-sorted cell-type specific transcriptome data from the mouse brain [@Cahoy2008], we checked if there is any overlap between genes that become heterogeneous with age and cell-type specific genes. We downloaded the dataset from the GEO database (GSE9566) and preprocessed it by performing: i) RMA correction using the ‘affy’ package in R [@Gautier2004], ii) log2 transformation, iii) quantile normalization using the ‘preprocessCore’ package in R [@Bolstad2019], iv) mapping probeset IDs to first mouse genes, and then human genes. We only included genes that have one to one orthologs in humans, after filtering out probesets that map to multiple genes.
+
+We first defined the cell-type specific genes by calculating an effect size (Cohen’s D) for each gene and cell type and identifying genes that have an effect size higher than or equal to 2 as specific to that cell type. At this cutoff, there was no overlap between cell type specific gene lists. To test for association between heterogeneity and cell type specificity, we used the Fisher’s exact test using the R ‘fisher.test’ function.
+
+Following another approach, we analyzed the relative cell-type contribution to the expression profiles and calculated both how the level and heterogeneity of the relative contributions change with age. This analysis requires positive expression values and since the Colantuoni2011 dataset is loess-normalized, we only analyzed Kang2011 and Somel2011 datasets. To determine the relative contribution of different cell-types we used a linear regression based approach, where the contributions are determined based on the following formula:
+
+\begin{equation}
+    Expr = \alpha + \beta_{A}\zeta_{A} + \beta_{Oli}\zeta_{Oli} + \beta_{MOli}\zeta_{MOli} + \beta_{OPC}\zeta_{OPC} + \beta_{N}\zeta_{N} + \epsilon
+  (\#eq:heteq2)
+\end{equation}
+
+Where; A: Astrocytes, Oli: Oligodendrocytes, M_Oli: Myelinated Oligodendrocytes, OPC: Oligodendrocyte Precursor Cells, N: Neurons. $\beta$’s represent the regression coefficients estimate the relative contributions of each cell type, $\zeta$’s represent expression level of each cell type (averaged across replicates), and $\epsilon$ represents residuals.
+
+#### Effect of sex-specific gene expression on heterogeneity
+
+To test the effect of sex on increased heterogeneity during ageing, we first obtained residuals from equation (1) for 147 consistent genes. Then, we performed two sample Wilcoxon test, using ‘wilcox.test’ function in R, to test if the distribution of residuals differs significantly between sexes. As we used the real values of residuals here (not absolute values), we would expect a significant difference in their distribution if the expression change is in different directions between sexes. p-values obtained from Wilcoxon test for each gene in each dataset separately were corrected for multiple testing with the Benjamini and Hochberg method using the ‘p.adjust’ function in R. The number of genes showing a significant difference, and their consistency among ageing datasets are shown in Figure \@ref(fig:hetFigS28).
+
+#### Code Availability
+All analysis was performed using R and the code to calculate heterogeneity changes with age is available as an R package ‘hetAge’, documented at https://mdonertas.github.io/hetAge/. “ggplot2” [@Wickham2017], “ggpubr” [@Kassambara2018], and “pheatmap” [@Kolde2019], R libraries were used for the visualization.
+
+## Ageing and diseases
+
+#### UK Biobank Data
+Data is downloaded using bash and following the guidelines provided by the UK Biobank.
+
+**Sample quality control**
+
+After excluding all samples from individuals who have withdrawn their data from UK Biobank, we first filtered out all samples without genotypes (N = 14,248). Then, we used the following criteria for the remaining 488,295 samples.
+
+**Discordant sex:** Data includes two entries for sex: 1) self-reported and 2) genetic sex determined using the call intensities on sex chromosomes. There are multiple reasons why these two entries may not correspond, such as sample mishandling, errors in data input, transgender individuals, and sex chromosome aneuploidies [@Anderson2010; @Bycroft2018]. Since we used sex as a covariate in our GWAS model, we preferred to be cautious about this issue and excluded all cases where the genetic sex and self-reported sex do not correspond and all cases where sex chromosome aneuploidy is detected. Specifically, we used the fields '31-0.0' (Sex) and '22001-0.0' (Genetic sex) to compile discordant information. There were 235 self-reported males being identified as female by the genetics, and 143 self-reported females being identified as males by the genetics. We excluded these 378 cases, making only 0.077% of the data. Moreover, field '22019-0.0' (Sex chromosome aneuploidy) is used to exclude cases with sex chromosome aneuploidy. There were 651 cases of aneuploidy, making 0.133% of all data. 181 of these cases (27.80% of aneuploidy cases) are also detected as discordant information in the first step. This corresponds to 47.88% of discordant sex cases. Overall, we identified 848 samples to be excluded based on this criterion.
+
+**Genotype call rate & Heterozygosity:** For exclusions based on missingness and heterozygosity we only used the suggested exclusions by UK Biobank. Specifically, we used the field '22010-0.0' (Recommended genomic analysis exclusions) and determined the cases with 'poor heterozygosity/missingness' (N = 469). We next used the field '22018-0.0' (Genetic relatedness exclusions) and noted down the cases with 'Participant self-declared as having a mixed ancestral background' (N = 692), and the cases with 'High heterozygosity rate (after correcting for ancestry) or high missing rate' (N = 840). Lastly, there were 968 cases that are suggested as outliers for heterozygosity or missing rate, field '22027-0.0' (Outliers for heterozygosity or missing rate).  Genotype missingness and heterozygosity are widely used as a measure of DNA sample quality. We then checked the scatter plots for logit(Missingness) vs. Heterozygosity for each Ethnic Background, in accordance with the identification of samples to exclude by the UK Biobank [@Bycroft2018] (Figure \@ref(fig:disFigS31)). Logit transformation is used to linearize sigmoidal distribution of missingness. Investigation of heterozygosity can detect DNA sample contamination, inbreeding, or mixed ethnicity [@Anderson2010]. This quality check enables seeing that people with a mixed ethnicity tend to have a higher heterozygosity, even after correcting for PCs. We confirmed these are in accordance with the original article and excluded the samples suggested by the UK Biobank.
+
+```{r disFigS31,out.width = '100%', fig.cap=c("Scatter plot between logit(missingness) and PCA corrected heterozygosity measures. Each panel shows a self-declared ethnic background. Vertical red lines show the missing rate of 0.05, and horizontal grey lines show the average heterozygosity in UK Biobank."), fig.scap="Scatter plot between logit(missingness) and PCA corrected heterozygosity measures."}
+knitr::include_graphics(path = "figures/disease/FigureS31.png")
+```
+
+Overall, there were 3,697 samples excluded based on these two criteria. Please note that the numbers presented above may not add up to this number. That is because there were some samples excluded because of multiple criteria. The percent overlap across multiple criteria is given in Figure \@ref(fig:disFigS32).
+
+```{r disFigS32,out.width = '50%', fig.cap=c("A heatmap showing the overlap between exclusions based on different criteria. Values show the percent of the column in the row, e.g. 19.4\\% of 'Rec. Exclusions' are in 'Hetero / missing outliers' i) 'Hetero / missing outliers': '22027-0.0' (Outliers for heterozygosity or missing rate), ii) 'Rec. Exclusions': field '22010-0.0' (Recommended genomic analysis exclusions), iii) 'High hetero / missing': '22018-0.0', High heterozygosity rate (after correcting for ancestry) or high missing rate, iv) 'Mixed Ancestry': '22018-0.0', Participant self-declared as having a mixed ancestral background, and v) 'Discordant Sex': as described in the sample QC methods."), fig.scap="A heatmap showing the overlap between sample exclusions based on different criteria."}
+knitr::include_graphics(path = "figures/disease/FigureS32.png")
+```
+
+After the exclusions, we had 484,598 samples.
+
+**Preparing the trait data**
+
+Using the samples that pass the quality control (N=484,598), we subset the data so that it includes only the baseline visit. Apart from the data that is already available in UK Biobank, we calculated some other values: 1) BMI: Using the columns for 'Weight' and 'Standing height' we calculated BMI as: Weight / (Standing Height / 100)2, 2) Parent Age at Death - Minimum: The youngest age at which either parent died. 3) Parent Age at Death - Maximum: The age of death for the parent who lived longest. 4) Parent Age at Death - Average: The average age of death for the two parents. If neither of the parents died, or if the data is unavailable, these values (2-4) are set to be NA. If only one parent died, we use the corresponding age as both the minimum, maximum, and average. 5) The number of self-reported non-cancer diseases: The number of unique self-reported non-cancer illnesses each participant recorded in the baseline recruitment. 6) The number of self-reported cancers: The number of unique self-reported cancers each participant recorded in the baseline recruitment. 7) Self-reported diseases after taking the disease hierarchy into consideration (Propagated disease data): The self-reported diseases in UK Biobank are not independent, but rather are organized in a hierarchical manner. Using the relationship information between diseases, we propagate disease-participant associations, upwards, including terms higher up the tree. For example, if a person reports having "essential hypertension", we also annotate that person with "hypertension", and "cardiovascular disease". 8) Age at diagnosis for the self-reported diseases after taking the disease hierarchy into consideration (Propagated age at diagnosis data): We re-defined age at diagnosis using the minimum age at diagnosis for all the diseases that are child term for a particular disease. 9) The number of self-reported non-cancer diseases after taking the disease hierarchy into consideration (Propagated number of non-cancer diseases): The number of unique self-reported diseases each participant records after taking into account the data propagation. 10) Age when the last deceased person died: We calculated the age of each person when the last death entry in the UKBB happened. This value is used to calculate the proportion of people who died at a certain age interval in Figure \@ref(fig:disFigS1)c.
+
+**Selecting diseases to analyze**
+
+We calculated the disease occurrences for all self-reported diseases in UK Biobank. Specifically, among the cohort we will use, we calculated how many participants and what proportion of males and females reported each disease. Since we analyze the same set of SNPs that have MAF>=0.01 across multiple diseases, to decrease the false positive rate in GWAS, we limited the diseases to a subset with at least 2,000 cases (n = 129 out of 472). Moreover, we only focused on diseases that are common and not sex-specific, *i.e.* we only considered diseases that are seen in 1 in every 1,000 males and females (n = 189 out of 472). The intersection of these two conditions was 116 diseases and we excluded all others.
+
+In this study, we only analyzed self-reported non-cancer diseases (field ‘20002’) and did not combine self-reported cancers (field ‘20001’), mainly because i) the number of cases is low (45,224 compared to 384,906 for other diseases), ii) cancer is thought as a result of a complex interaction between germline and somatic mutations [@Kanchi2014; @Khurana2016], whereas the evidence for the effect of somatic mutations in other diseases is limited to rare and neurological disorders [@Poduri2013; @Zhang2018], iii) the relationship between cancer and ageing is complex, *e.g.* while telomere attrition and cellular senescence, are thought to be evolved as a tumor suppressor mechanisms; ageing-related changes in epigenomic landscape and genomic instability contribute cancer occurrence [@Finkel2007]. Thus, although a similar analysis using cancers would be interesting, we only focused on non-cancer self-reported diseases in this study.
+
+#### Disease co-occurrences
+
+```{r discooccurTable}
+ds = data.frame(x = c('Disease A','Not Disease A'),
+                `DiseaseB` = c('Nab','Nnab'),
+                `NotDiseaseB` = c('Nanb','Nnanb'),
+                `Total` = c('Ta','Tna'))
+kable(ds, format = "latex", booktabs = T,  caption = 'Contingency table for disease comorbidities.', longtable=T) %>%
+    kable_styling(font_size = 12)
+# kable(dsetinfo, format = 'pandoc', booktabs = T,  caption = 'Dataset information', longtable=T, font_size = 8)
+```
+
+**Relative risk (RR) score**
+
+Relative risk is an estimate of having the disease A, when already affected by disease B. Overall it measures if disease A co-occurs with disease B more frequently than expected if these diseases were independent in the population. It is calculated as a fraction between the number of patients diagnosed with both diseases and a random expectation based on disease prevalence [@Sanchez-Valle2018]. Mathematically it can be expressed as follows, using the values from Table \@ref(tab:discooccurTable):
+
+\begin{equation}
+\begin{aligned}
+    P_{exposed} = \dfrac{N_{ab}}{T_a}, P_{notexposed} = \dfrac{N_{nab}}{T_na} \\\\
+    RR = \dfrac{P_{exposed}}{P_{notexposed}} \\\\
+    CI = lnRR \pm 1.96 \sqrt{\dfrac{\dfrac{T_a-N_{ab}}{N_{ab}}}{T_a} + \dfrac{\dfrac{T_{na}-N_{nab}}{N_{nab}}}{T_{na}}}
+  (\#eq:disRR)
+\end{aligned}
+\end{equation}
+
+**$\phi$ value (Pearson correlation for binary variables)**
+
+It measures the robustness of the association between diseases based on co-occurrences [@Gutierrez-Sacristan2018]. Mathematically, it can be expressed as:
+
+\begin{equation}
+    \phi_{AB} = \dfrac{C_{AB}N - P_AP_B}{\sqrt{P_AP_B(N-P_A)(N-P_B)}}
+  (\#eq:disphi)
+\end{equation}
+
+$N$: the total number of individuals
+
+$P_{A}$: Prevalence of disease A
+
+$C_{AB}$: Number of patients with both diseases
+
+$\phi$ ranges between -1 and 1, where the sign indicates the type of association.
+
+#### Disease age-of-onset
+
+**Disease dissimilarity measure**
+
+**Temporal correlation:** In order to calculate dissimilarities among diseases, we use CORT [@Chouakria2007] distance as included in R package TSclust [@Montero2014]. Euclidean distance and dynamic time warping [@Berndt1994] are the two most widely used proximity measures for time series proximity. However, they are both calculated based on the closeness of the values and disregard the growth behavior. Correlation-based measures are also used to calculate the similarity between time series. However, Pearson correlation overestimates the similarity because of the underlying temporal dependency and Spearman correlation fails to consider the growth rate as it is based on ranks. Chouakria et al., on the other hand, suggests a measure that also considers the proximity-based on growth behavior, CORT. Temporal correlation between two time series objects S1=(u1,u2,...,up) and S2=(v1,v2,...,vp) is calculated as follows:
+
+\begin{equation}
+    CORT(S_1,S_2) = \dfrac{\sum_{i=1}^{p-1}{(u_{i+1}-u_i)(v_{i+1}-v_i)}}{\sqrt{\sum_{i=1}^{p-1}{(u_{i+1}-u_i)^2}}\sqrt{\sum_{i=1}^{p-1}{(v_{i+1}-v_i)^2}}}
+  (\#eq:discort)
+\end{equation}
+
+CORT ranges between -1 and 1. A value of CORT = 1 implies that two time series increase or decrease simultaneously with the same growth rate, whereas a value of -1 shows the same growth rate but in the opposite direction. If the value is 0, it means there is no temporal correlation between the series.
+
+**Dissimilarity Index:** The dissimilarity index suggested by Chouakria et al, is calculated based on an automatic adaptive tuning function and considers similarity based on both values and behavior, *i.e.* the strength of monotonicity and closeness of the growth rates as calculated by CORT measure introduced in the previous section. They suggest a dissimilarity index D as follows:
+
+\begin{equation}
+    D(S_1,S_2)=f(CORT(S_1,S_2)).\delta_{conv}(S_1,S_2)
+  (\#eq:disdissimilarity)
+\end{equation}
+
+Where $f(x)$ is an exponential adaptive tuning function:
+
+\begin{equation}
+    f(x) = \dfrac{2}{1+exp(kx)}, k≥0
+  (\#eq:disexpadaptivetuning)
+\end{equation}
+
+As k increases, the contribution of behavior increases. We use k = 2 and as a result behavior (CORT) contributes 76.2% to D and values ($\delta_{conv}$) contribute 23.8%. For $\delta_{conv}$ we used conventional Euclidean distance.
+
+**Clustering diseases by age-of-onset**
+
+We clustered data using ‘partition around medoids (PAM)’ algorithm [@Kaufman1990] based on the distance measure calculated using the previous step. The aim of this algorithm is to minimize the average distance (based on any dissimilarity measure) between the objects and their closest selected medoid object. It works very similarly to k-means, except instead of defining arbitrary points as the means, it defines medoids among the objects. Thus, it can incorporate any distance measure instead of just using the mean distance between points (*i.e.*, euclidean distances). The algorithm first searches for k number of objects that represent the structure of the data (Here the number k is assumed to be known a priori but see the next section for the determination of k). After finding a set of k medoids, k clusters are constructed by assigning each observation to the nearest medoid. Overall, the goal is to find k representative objects such that the sum of dissimilarities of the observations to their closest representative is as small as possible. After each assignment, medoid and non-medoid data points are swapped and a cost (sum of distances of points to the new medoid) is calculated. If the total cost of configuration is decreased, then the new configuration is maintained, otherwise, it is reversed. We used ‘pam’ function in the ‘cluster’ package [@Maechler2019] in R to apply this algorithm.
+
+**Choosing the optimum number of clusters**
+
+The clustering algorithm we used, PAM, clusters data into k clusters, which is determined by the user. So, even if there is no real structure in data, as we increase the number of clusters, we can get more and more clusters. A potential way to decide on the number of clusters is using the gap statistic [@Tibshirani2001]. This value is calculated by comparing logarithm of the within-sum-of-squares and comparing it to averages from simulated data where there is no structure.
+
+\begin{equation}
+    WSS_k = \sum_{l=1}^{k}{\sum_{x_i\in C_l}{d^2(x_i,\overline{x_l})}}
+  (\#eq:disWSS)
+\end{equation}
+
+$k$: number of clusters
+
+$Cl$: objects in the l-th cluster
+
+$\overline{x}$: the average point.
+
+Calculating only WSS, however, is not enough as it would be minimized when each point has its own cluster. Thus, we use the gap statistic which suggests calculating $log(WSS_k)$ for a range of values of k and compare it to that obtained by WSS calculated based on simulated data. So, after WSS is calculated for various values of k, the algorithm involves generating B (we choose B=1,000) reference datasets, using Monte Carlo sampling from a homogeneous distribution and re-calculate WSS for all k values. Using these values gap(k) statistic is calculated:
+
+\begin{equation}
+\begin{aligned}
+    gap(k) = \overline{l_k}-log(WSS_k)\\\overline{l_k} =\dfrac{1}{B}\sum_{b=1}^{B}{log(W^*_{kb})}
+  (\#eq:disgapstat)
+\end{aligned}
+\end{equation}
+
+If the clustering is good (WSS is small) we expect lk to be higher than $log(WSS)$. Thus gap statistic is mostly positive and we are interested in the highest value. @Tibshirani2001 suggests using the smallest k such that,
+
+\begin{equation}
+    gap(k)≥gap(k+1)-s'_{k+1}
+  (\#eq:disgapstatincrem)
+\end{equation}
+
+where
+
+\begin{equation}
+\begin{aligned}
+    s'_{k+1}=sd_{k+1}\sqrt{1+\dfrac{1}{B}}\\
+    sd^2_k=\dfrac{1}{B-1}\sum_{b=1}^{B}{(log(W^*_{kb})-\overline{l_k})^2}
+  (\#eq:dissk)
+\end{aligned}
+\end{equation}
+
+Using this approach, we determined k = 4.
+
+#### Genome wide association study
+
+**Preparing the files required for GWAS**
+
+**Fixing FAM files:** In UK Biobank FAM files, the column for ‘phenotype’ includes batch that is coded with characters. In order to use BOLT-LMM [@Loh2015], we updated all the entries in this column to numeric values [@Loh2017].
+
+**‘Remove’ files for BOLT-LMM:** BOLT-LMM accepts a list of individuals to be removed from the analysis as an input. These files are called ‘remove’ files and are in the FAM format. We prepared these files for i) withdrawn samples (n = 51), ii) samples that failed the quality control (n = 3,779), iii) samples that have information in PLINK files but lack BGEN files (n = 968).
+
+**Calculating the SNP statistics:** In order to apply a quality filter for SNPs, using PLINK [@Anderson2010], we calculated i) p-values for each SNP showing whether it deviates from Hardy-Weinberg equilibrium, and ii) Minor allele frequencies (MAF).
+
+**SNP Quality Control:** We excluded SNPs that deviate from Hardy-Weinberg equilibrium (p ≤ 1e-6, n = 202,473) or with a minor allele frequency (MAF) smaller than 0.01 (n = 127,969). In total, we discarded 314,697 SNPs (Note that the numbers do not add up as these SNPs can overlap).
+
+**Phenotype File:** We created a phenotype file that can be used as an input for BOLT-LMM, including the following fields: sex, age when attended assessment center, calculated BMI, assessment center, ethnicity, batch, first 20 PCs, and self-reported diseases (one column per disease).
+
+**GWAS run using BOLT-LMM**
+
+For each disease, we run GWAS separately using BOLT-LMM with the following inputs:
+* We remove the samples that are in plink files but now in bgen; samples that did not pass our QC; samples from the individuals who have withdrawn their data from the UKBB
+* We excluded the SNPs that deviate from Hardy-Weinberg equilibrium, and have minor allele frequency lower than 0.01.
+* We used Sex, Age, BMI, assessment center, ethnicity, batch, and the first 20 PCs as covariates.
+* To run the mixed-model, a reference LD score table is required. We used LD scores generated using 1000G European-ancestry samples, which is provided with the BOLT-LMM download.
+* Genetic map for hg19 file provided in the BOLT-LMM website.
+* We set ‘bgenMinMAF’ argument to 1e-2 and ‘bgenMinINFO’ parameter to 0.5 to only include SNPs that pass these criteria.
+
+**GWAS Results**
+
+We removed MHC region (chr6: 28,477,797 - 33,448,354) from the analysis and considered positions with a p-value lower than $5*10^{-8}$ as a significant association.
+
+#### Coding Variants
+
+We used VarMap [@Stephenson2019] to map variants to proteins and domains. VarMap provides detailed information about coding variants, including annotations for the missense, synonymous, and nonsense variations. In our analysis, if a variant is not annotated as a coding variant in VarMap output, we assumed it is non-coding.
+
+#### Genetic similarities between diseases
+
+In order to calculate the overlap between diseases we used the number of SNPs that are significantly associated with both diseases, but corrected by the number that is expected by chance, if two diseases are independent:
+
+\begin{equation}
+    Genetic Similarity = \dfrac{N_{common}}{N_{d1}*N_{d2}}*N_{total}
+  (\#eq:disgensim)
+\end{equation}
+
+$N_{common}$: Number of SNPs in common.
+
+$N_{dx}$: Number of SNPs associated with disease X.
+
+$N_{total}$: Total number of SNPs analyzed in the study.
+
+The statistical significance of these genetic similarities is calculated using binomial test, and the similarity is only considered for downstream analysis if p<=0.01. Moreover, the value is only calculated if two diseases do not have any hierarchical relationships in the disease hierarchy.
+
+In order to assess the genetic similarity within age-of-onset clusters, we further used linear regression to correct this value by disease co-occurrences (risk ratios) and disease categories (binary data showing whether two diseases are of the same category). The ‘corrected genetic similarity’ is the residuals from this linear model.
+
+**LD Blocks**
+
+In order to assess the similarity between different diseases we use overlaps across significant associations and thus preferred not to do fine mapping. However, a significant challenge is that genomic variations are not independent but instead linked in the genome. To understand the effect of linkage or overcome it, we made use of linkage disequilibrium blocks previously defined for human genome [@Berisa2016]. We repeated the analysis for genetic similarity after collapsing all positions within an LD block and thus creating independent genomic loci (n = 1,703). We use binary information for LD blocks, *i.e.* blocks with at least one significant association are considered as a hit, and the rest are not.
+
+#### Analysis of causal relationships between diseases
+
+Using the LCV method developed by by @OConnor2018, we tested the causal relationships between diseases. We used the R functions developed by the authors and provided on GitHub (github.com/lukejoconnor/LCV/). We calculated the genetic causality proportion (GCP) between each disease pair, if the diseases have at least 10 significant variants and a significant heritability estimate as suggested by the developers (Zh≥7). We only calculated GCP if the diseases are not vertically connected on the disease hierarchy. Following the criteria applied by the developers, we considered pairs with FDR corrected p≤0.01 and mean GCP>0.6 as significant.
+
+#### SNP to gene mapping
+
+We map all SNPs analysed in GWAS to genes based on proximity and eQTL results.
+
+**Using proximity**
+
+Using VariantAnnotation [@Obenchain2014], TxDb.Hsapiens.UCSC.hg19.knownGene [@Carlson2015], and GenomicRanges [@Lawrence2013] packages in R, we mapped the genomic coordinates for each SNP to genes. Specifically, if a gene is within the coding region, intron, 5’ or 3’ UTR, or 1kb down- or up-stream of the transcription start site, we annotated that SNP to the gene. As a result, we had 4,443,872 SNP-gene associations for 4,236,176 SNPs and 22,228 Entrez gene IDs. We used the Ensembl biomaRt [@Durinck2009] package in R to retrieve HGNC symbols (17,994), Ensembl Gene IDs (20,507), and gene descriptions for the Entrez gene IDs obtained from TxDb.Hsapiens.UCSC.hg19.knownGene database.
+
+**Using GTEx eQTL data**
+
+Using SNP-gene associations based on GTEx v7 eQTL data (accessed on 04.09.2018) [@Gamazon2018], we associated SNPs with the genes they could potentially regulate. We generated a combined tissue list, which associates SNP to the gene if there is at least one tissue in which there is a significant (p <= 5e-8) association. As a result, there are 2,166,300 unique SNPs associated with 15,312 Ensembl Gene IDs. We used the biomaRt [@Durinck2009] package in R to retrieve HGNC Symbols (12,292), Entrez IDs (10,163), and gene descriptions.
+
+**Comparison of proximity and eQTL based mapping**
+
+```{r disFigS33,out.width = '100%', fig.cap=c("(a) Density plots showing the number of SNPs per gene, based on eQTL data (blue) and proximity (brown). (b) Scatter plot between the number of SNPs per gene mapped using genomic proximity (x-axis) or eQTL data (y-axis). Each dot represents a gene and the blue line shows the linear model. Dashed red line shows one-to-one relationship. The rug-plots on the axes show the marginal distribution of genes. "), fig.scap="Relationships between SNP-gene associations based on proximity and eQTL data."}
+knitr::include_graphics(path = "figures/disease/FigureS33.png")
+```
+
+Instead of only focusing on disease-associated SNPs, we first mapped all SNPs that we analyzed to discover if there is a bias for certain genes (*e.g.* some genes could have many more SNPs because they are longer, or because they are already associated with certain traits and the chip is designed in that way). There were as much as 19,195 SNPs mapped to one gene (CSMD1) by proximity, whereas there were 82 SNPs per gene on average (median). The number of SNPs per gene was on average, higher for the mappings by eQTL (Figure \@ref(fig:disFigS33)a). The maximum was 8473 SNPs for HLA-C gene and the median number of SNPs per gene was 218. However, we did not consider MHC region in our downstream analysis and thus this region is also excluded. The correlation between the number of SNPs per gene was low (rho = 0.13, Figure \@ref(fig:disFigS33)b). Since the proximity based mapping is by definition dependent on the gene length, we also tested if there is a significant correlation between the number of SNPs per gene and gene length. While the correlation is low for gene mappings by eQTL (Spearman’s correlation rho = 0.03, p = 1.073e-4), mappings by proximity show a high correlation as expected (Spearman’s correlation rho = 0.87, p < 2.2e-16). This also explains the low correlation between eQTL and proximity-based mappings. We next checked the correlation between the number of SNPs per gene mapped by proximity but only to promoter region. The correlation between the number of SNPs and gene length decreased (rho = 0.21), and the correlation with the number of SNPs by eQTL slightly increased but was still low (rho = 0.08). Overall, we concluded that both eQTL data and proximity-based mapping could capture different information and decided to use both for the downstream analyses.
+
+#### GWAS Catalog analysis
+
+We accessed the GWAS Catalog on 30-07-2019 and used v1.0.2 e96 dataset [@Buniello2019]. We excluded all studies which used UK Biobank dataset (n = 190, data courtesy of GWAS Catalog team). Using the associations with a p-value lower than $5*10^{-8}$, we compiled significant associations between MAPPED_GENEs and MAPPED_TRAITs. We use GWAS catalog analysis to check if our GWAS hits are supported by previous studies and applied a Fisher test between all traits in GWAS catalog and the diseases in our study. P-values are corrected for multiple testing using FDR correction.
+
+#### Analysis of the relevance with ageing
+
+We downloaded GenAge human, GenAge model organism [@Tacutu2018] and DrugAge [@Barardo2017] data on Aug 13, 2019 and CellAge [@Avelar2019] data on Oct 02, 2019 (CellAge data is kindly provided by Avelar et al.). We used HGNC Symbols for GenAge and CellAge genes. In order to compile genes that are targeted by the drugs in DrugAge database, using the drug names in DrugAge data, we first compiled PubChem IDs using PubChem REST API [@Kim2019]. Using UniChem [@Chambers2013], we mapped PubChem IDs to ChEMBL IDs [@Gaulton2017]. Next, using DGIdb [@Cotto2018], we compiled the genes targeted by these ChEMBL IDs. As a result, we had 307 genes from GenAge human database, 902 genes from GenAge model organism database, 279 genes from CellAge database, and 714 genes targeted by DrugAge drugs. We next calculated the overlaps between these databases and the genes associated with multiple diseases or multiple categories in different age-of-onset clusters. To calculate the expected values and statistical significance, we used 10,000 permutations calculating the overlap for the same number of random genes among genes that can be detected by GWAS. Then, an odds ratio is calculated by dividing the observed value to the mean of expected values.
+
+#### Functional Enrichment Test {#disGO}
+
+Using the goseq package in R [@Young2010], which takes the gene length bias into account, we performed a functional analysis of the genes associated with different age-of-onset clusters. Using GO categories with more than 10 and less than 500 annotated genes, we applied an enrichment test for the Gene Ontology (GO) [@Ashburner2000; @The_Gene_Ontology_Consortium2019] Biological Process (BP), Molecular Function (MF), and Cellular Compartment (CC) categories. BY correction [@Benjamini2001] is applied to the p-values for all tests for all clusters and 3 GO Categories (BP, MF, and CC) combined. We considered associations with an BY-corrected p-value lower than 0.05 as significant. For the ease of visualization and comprehension we selected representative categories for significant associations as follows: For each cluster and GO Ontology (*i.e.* BP, MF, CC) separately; i) Jaccard similarity index (*i.e.* number of genes in common divided by the number of unique genes in each category combined) is calculated between all significantly associated GO Categories; ii) Jaccard indices are hierarchically clustered and cut to k number of groups, where k is the minimum number of clusters which ensures median Jaccard similarity within a cluster is above 0.5; iii) The category with the highest average similarity to other categories in the same cluster is assigned as the representative.
+
+#### Drug Repurposing
+
+We searched for the drugs that specifically target multicategory genes in cluster 1, cluster 2, or cluster 1 and 2. Using the Fisher’s exact test, we compiled the drugs in DGIdb [@Cotto2018] specifically targets these genes (p≤0.01) and drugs that target only one gene in one of these cluster. The interaction data is compiled from DGIdb, and the names of the drugs are obtained from ChEMBL REST API [@Gaulton2017].
+
+#### Evolutionary Analysis
+
+In order to test the mutation accumulation and antagonistic pleiotropy theories of ageing we used the risk allele frequencies in UK Biobank and 1000 Genomes super-populations [@1000_Genomes_Project_Consortium2015]. Risk allele is an allele that shows positive association with a disease. Since the SNPs are not independent and have similar allele frequencies in a given LD block, we analyzed LD blocks instead of individual SNPs and used the median risk allele frequency for a given LD block. We used only the biallelic SNPs for this analysis. Allele frequencies for UK Biobank are calculated using BOLT-LMM and the allele frequencies for 1000 Genome super-populations are obtained from the vcf file provided on the 1000 Genomes project website. To test the antagonistic pleiotropy excess, we calculated the proportion of antagonistic vs. agonist SNPs within the same vs. different age-of-onset clusters using Fisher’s exact test. We considered pleiotropic SNPs as agonist if the risk allele for two or more diseases are the same, and antagonist if the risk alleles are opposite. We only tested the risk allele frequency differences between cluster 1 and cluster 2. Also, we excluded any SNPs that are antagonistic within an age-of-onset cluster and agonist between clusters.
+
+## Drug repurposing for ageing
+### Gene Expression-Based Drug Repurposing to Target Ageing
+
+#### Datasets
+
+In order to define the gene expression changes during ageing, we only included datasets with samples across different ages. In this way, we calculated the changes that occur monotonically throughout the ageing process, rather than looking at differences in the young and old group. Datasets used in this study are all published datasets and include both microarray and RNA-seq data. The pre-processing steps for each are described below.
+
+**Microarray datasets.** We used seven microarray-based RNA expression studies with samples from 22 brain regions, that are not mutually exclusive (Supplementary Table S1). Data from different brain regions are processed and analysed separately, resulting in 26 datasets. The number of individuals in each dataset ranges between 11 and 148. The total number of individuals is 304, and the total number of samples is 805 (after removing the outliers). Some studies include samples covering the whole lifespan. However, in this study, we only considered samples above 20 years of age, which corresponds to the age at first reproduction in human societies [@Walker2006]. Previous human brain ageing studies using transcriptome data have also suggested gene expression patterns before and after the age of 20 are discontinuous [@Colantuoni2011; @Donertas2017]. Since we are interested in finding consistent tendencies in terms of the direction of change, which can characterise ageing, we only included samples above 20 years of age. As a result, the samples included in the analysis had ages between 20-106. The microarray data were downloaded from NCBI GEO [@Barrett2013] using the accession numbers in Supplementary Table S1. Using "affy" [@Gautier2004] or "oligo" [@Carvalho2010] libraries in R, RMA background correction is applied to the expression data. The data is then log2 transformed, and quantile normalized (using "preprocessCore" library in R). By visual inspection of the first and second principal components of the probe-set expression levels, outliers were excluded from the further analysis (Supplementary Table S1). The age distributions for the datasets after outlier removal are given in Figure \@ref(fig:drugFigS1)a. Gene annotations for the probe-sets are obtained from the Ensembl database using the 'biomaRt' library [@Durinck2009] in R. Because the annotations for the probe-sets used in Kang2011 and Colantuoni2011 are not available in Ensembl, we used the GPL files deposited in GEO. If Ensembl gene IDs are not provided in the GPL files, Entrez gene IDs were extracted and converted to Ensembl Gene IDs using the 'biomaRt' package. Probe-set level expression information is then mapped to gene IDs. In order not to duplicate expression values, we excluded the probe-sets corresponding to multiple genes. Expression values for the genes with multiple probe-sets were summarised using the mean expression levels. The PCA plots for the samples using gene expression levels are given in Figure \@ref(fig:drugFigS1)b. RNA-seq dataset: We analysed transcriptome data generated by GTEx project (v6p) [@GTEx_Consortium2015]. Samples are filtered based on the cause of death circumstances (4-point Hardy Scale). Only the cases with a death circumstance of 1 (violent and fast deaths due to an accident) and 2 (fast death of natural causes) are used for the downstream analysis and the samples with illnesses are excluded. Among all tissues, only the ones having at least 20 samples are considered. We also excluded 'Cells - Transformed Fibroblasts' category to include only the samples from tissues. As a result, 35 datasets (17 major tissue type) are used for the downstream analysis, 13 of which were from the brain. The final set that we analysed includes 2152 (623 for the brain) samples from 120 (99 for the brain) individuals. The genes with median RPKM value of 0 are also excluded from data. The RPKM values provided in the GTEx database are log2 transformed and quantile normalized for the downstream analysis. Similar to the microarray data, we excluded the outliers based on the visual inspection of the first and second principal components (Supplementary Table S1). Distribution of the ages and the PCA plots after outlier exclusion are given in Figure \@ref(fig:drugFigS1).
+
+**Batch correction.** In this study, each dataset is analysed separately, and only the gene expression changes that are consistent across all datasets are considered for the downstream analysis. Since multiple datasets are not combined, and datasets generated at different labs using different platforms unlikely to have the same confounders, we did not apply a correction method other than quantile normalisation and outlier removal based on the PCA (using probe-set level expression data for microarrays and gene-level expression data for RNA-seq as described above). Moreover, most of the datasets have a homogenous sample set as the number of samples is low and for the datasets with a large number of samples, we do not detect any clustering.
+
+#### Age-related expression changes and the ageing signature {#ageingSignatureMethods}
+
+The Spearman's rank correlation coefficients between age and gene expression levels are used to measure age-related expression changes. Instead of combining the datasets, we calculated the Spearman's correlation for each gene, for each dataset separately. As a result, each gene had two measures to assess its age-related expression: 1) a correlation coefficient (rho), indicating the strength and the direction of change with age and 2) a p-value, showing the significance of the association. The p-values are corrected for multiple testing using p.adjust function in R, with method="FDR" argument. As the power to detect significant changes in each dataset is different and the sample size is small for most of the datasets, for the downstream analysis we only used the correlation coefficients (rho) and assessed the significant gene expression change tendencies that are consistent in all datasets. When a gene is up-regulated by age throughout the lifespan, then it would have a positive Spearman's correlation coefficient that is close to one. In contrast, a gene would have negative correlation coefficient if it is down-regulated. When the association is not strong, the magnitude of the correlation coefficient decreases, but the sign still reflects the direction of change that is observed in most of the time-points. We used the sign of correlation coefficient, *i.e.* the direction of change, to compile the set of genes that show consistent changes across all datasets. This set of genes are referred to as the 'ageing signature'. The ageing signature, thus, does not reflect the dramatic changes in gene expression but captures consistent trends that are observed across all datasets. The statistical significance of the ageing signature is calculated using a permutation scheme, testing the significance of the consistency.
+
+#### Permutation test {#drugPermutationTest}
+
+We used a permutation scheme that we developed earlier [@Donertas2017], to simulate the null hypothesis that there is no association between age and the gene expression, while retaining the dependence between genes and the datasets. Particularly, the ages of individuals in each study are permuted (randomised) 1,000 times and if that individual donated multiple samples for different brain regions, each sample is annotated with the same age. Then, the Spearman's correlation coefficient between these randomised ages and the gene expression value for all genes are calculated. In this way, we retain the dependence between genes (*e.g.* those regulated by the same transcription factor) and the samples (*e.g.* donated by the same individuals). Permutations are performed using 'sample' function in base R.
+
+Using the correlation coefficients calculated through permutations performed as explained above, we tested i) significance of the correlations among datasets, ii) significance of the finding the same or a higher number of consistently up- or down-regulated genes, *i.e.* the ageing signature. In order to test the significance of the correlations among datasets, we calculated the correlations between the expression-age correlation coefficients calculated using the permutations. We constructed the distribution for the median correlation coefficient among datasets (distribution of the 1,000 values), and calculated how many times the randomized values have higher correlation than the value we calculate using the real ages. In this way, we calculate an empirical p-value. The median of the permuted values reflects the value that would be expected by chance. Similarly, in order to test the significance of the ageing signature, we compiled permuted ageing signatures, for 1,000 times, and asked how many times we have the same or higher value than the calculated number of genes in the microarray or GTEx ageing signatures. In this way, we calculate the empirical p-value and median of the number of shared tendencies based on permutations, reflecting what would be expected by chance.
+
+#### Gene Ontology Enrichment
+
+Using "topGO" [@Alexa2019] and "org.Hs.eg.db" [@Carlson2019] libraries in R, we performed a functional analysis of the ageing signature. Using GO categories with more than 10 annotated genes, we applied an enrichment test for the Gene Ontology (GO) [@Ashburner2000; @The_Gene_Ontology_Consortium2019] Biological Process (BP) categories.
+
+#### Connectivity Map Analysis {#drugCMapMethod}
+
+A list of genes showing a consistent change in ageing (the ageing signature) is used to query the Connectivity Map [@Lamb2006]. Since the Connectivity Map input requires probe-set ids, the "biomaRt" package in R is used to convert the gene list to the probe-set ids that are compatible with the CMap data. The probe-sets that are in both up- and down-regulated probe-set lists are excluded from both lists. The final lists are used to query CMap database to associate the ageing signature with the drug perturbed expression profiles in the database. The resulting p-values are FDR corrected to account for multiple testing and adjusted p<0.05 is used as the significance threshold.
+
+The ageing signature compiled using the GTEx data had more than 500 probe-sets in both up and down lists.  Since the algorithm requires an input with less than 500 entries, we used the ones with the higher magnitude of expression change (median Spearman's rank correlation coefficients across 13 brain regions). In order to show that this does not bias the results, we repeated this step for 1,000 times by randomly selecting 500 of the probe-sets in the GTEx ageing signature. In order to automatize this process, we re-implemented CMap algorithm in R and calculated the drug similarity scores using the 'rankMatrix.txt' data provided on the CMap website. Drug similarity scores generated using the top 500 and randomly selected 500 of the GTEx ageing signature showed a significant correlation (median rho = 0.81, range = (0.80,0.82)), suggesting that this approach does not bias the results.
+
+#### Searching the drug databases for CMap drugs
+
+Entries in the Connectivity Map are composed of the drug names, which are generally the catalogue names for the drugs from chemical vendors. Similarly, DrugAge drugs also do not have an ID that is possible to map across different databases. The DrugAge database was retrieved on 11th May 2017, from the DrugAge website. In order to compare the drugs in the Connectivity Map and the DrugAge, we first used the PubChem database [@Kim2016] to make a transition across different sources. We obtained PubChem compound IDs for each drug in the Connectivity Map and DrugAge using PubChem API accessed through R programming environment and 'RCurl' and 'jsonlite' libraries.
+
+#### Targets of the drugs that are significantly associated with ageing
+
+We compiled the drug-target associations for the drugs significantly associated with ageing mostly through literature research. For the cases where the database entries are manually curated and consistent, we used CHEMBL [@Bento2014], DrugBank [@Law2014], and PubChem  [@Kim2016]. We downloaded GenAge model organism and human datasets [@Tacutu2018] on 10th October 2017 using GenAge website. Using the human orthologues for the model organisms (genage_models_orthologs_export.tsv) and the human dataset, we asked if any of the drug targets were previously shown to be implicated in ageing. In order to construct the drug – target network, we used 'ggnetwork' package in R.
+
+#### The Pro-Longevity Drug Expression Profile {#drugProExpProf}
+
+In order to compile a set of gene expression changes that can be associated with the known pro-longevity drug profile, we first downloaded the pre-processed data matrix with the drug-induced expression changes ('amplitudeMatrix.txt' from CMap FTP server ftp://ftp.broadinstitute.org/distribution/cmap). Using this matrix, for the seven pro-longevity drugs in DrugAge that are among the significant associations according to our analysis, we generated a pro-longevity drug profile. We first identified the drug-induced gene expression changes for each of these seven drugs and each of the probe-sets that are in the microarray ageing signature. For each drug – probe-set pair, we take the direction of change that is observed in at least 60% of the experiments (using different doses or different cell lines) as the effect of that drug on the expression of that probe-set. After deciding on the individual drug effects, we took the type of change observed in at least four of seven drugs as the pro-longevity drug profile. The reason why we do not seek a perfect overlap among different drugs is to allow potentially different mechanism of actions to be included in the pro-longevity drug profile. As a result, we got five categories: 1) increase in ageing, increased by the drugs; 2) increase in ageing, decreased by the drugs; 3) decrease in ageing, increased by the drugs; 4) decrease in ageing, decreased by the drugs; and 5) the ones that are not affected consistently by the drugs. The full list of genes in the first four categories is given as Supplementary Table S5. We also asked if any of the GO Biological Processes is enriched in any of the first four categories and thus did an enrichment analysis. We calculated the odds ratio for each GO category by keeping the type of change in ageing the same. For example, we asked if a GO category is enriched in genes that increase in ageing and also increased by the drugs, compared to the genes that increase in ageing but decreased by the drugs. Because the number of genes is small, it is not possible to detect significant associations after correcting for multiple testing and thus we only report the odd's ratios for the categories (Supplementary Table S6). We also compared the known pro-longevity drug profile we compiled with the profile induced by the 24 drugs identified in the study (Figure \@ref(fig:drugFigS9)). We calculated the percentage of probe-sets that show the same type of change as the pro-longevity drug profile. For this, we again only considered probe-sets that show the same type of change in at least 60% of the experiments per drug.
+
+#### Gene-set enrichment analysis for drug-induced changes {#drugHitGO}
+
+Using the 'amplitudeMatrix.txt' downloaded from the CMap website, we determined the expression changes at the gene level for each drug. We first subset the matrix to include only the experiments for the 24 significant drugs we found. We then mapped the probe-set ids (total number of probe-sets = 22,283) to Entrez gene ids using the Ensembl biomaRt package in R. We map 19,222 probe-sets to genes, excluding examples where the same probe-set id maps to multiple genes (628 multi-gene probe-set ids in total). The genes with more than one probe-set id are represented by taking the median expression change induced for the probe-sets (number of genes = 12064). When the experiments for each drug are treated separately, we noticed that the results were confounded by cell-line. Thus, we then summarized multiple experiments for each drug by taking the median of the change they induce. In this way, we trimmed the cell-line specific effects. Then the expression changes (for 12064 genes) for each drug (24 drugs) are rank ordered. Using clusterProfiler package and 'gseKEGG' and 'gseGO' functions, we performed GSEA for the gene expression changes induced by each drug separately. For the KEGG pathway analysis, we only considered the pathways with at least 50 genes (188 pathways), and for GO analysis, we only considered Biological Process categories with at least 50 and maximum of 200 genes (1589 categories).
+
+#### Comparing Brain Ageing Signature to Other Tissues
+
+We calculated the proportion of genes that show a change in the same direction with the ageing signature compiled using brain data. The proportions are calculated for ageing signatures compiled using the array and GTEx brain data, separately. We also analysed up-regulated and down-regulated genes separately to observe any differential pattern. In order to calculate the significance of similarity or dissimilarity we performed 10,000 permutations as follows: i) N number of genes, where N is the number of genes in a particular group (array / GTEx and up- / down-regulated), were selected randomly from a given GTEx dataset, ii) the proportion of changes in a given direction is calculated, and iii) using the distribution of these proportions, we asked how many times we obtain a value as extreme as the proportion calculated for that tissue and assign empirical p value.
+
+#### Side Effects
+
+Using compound PubChem IDs, we subset the Side Effect Resource (SIDER 4.1) [@Kuhn2016], a database of adverse drugs reactions for marketed medicines.  The latest version of SIDER code the side effects by using the Medical Dictionary for Regulatory Activities (MedDRA), an adverse event classification dictionary. To obtain term at the system level, we mapped the lowest-level MedDRA terms in SIDER (LLT codes) to MedDRA System Organ Class terms (SOC codes) using hierarchical files downloadable from the MedDRA web-based browser (https://tools.meddra.org/wbb/). A total of 8 drugs among the 24 had labelled side effects.

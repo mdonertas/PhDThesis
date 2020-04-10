@@ -1,2 +1,32 @@
+\usepackage{nomencl}
 \makenomenclature
-\usepackage{lipsum}  
+ 
+%% This code creates the groups
+% -----------------------------------------
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{H}{Diseases}{%
+  \ifstrequal{#1}{D}{Databases and Tools}{%
+  \ifstrequal{#1}{G}{Gene Symbols}{%
+  \ifstrequal{#1}{B}{Brain Regions}{%
+  \ifstrequal{#1}{A}{Abbreviations}{}}}}}%
+]}
+\usepackage{graphicx}
+  \DeclareGraphicsExtensions{.png,.pdf}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\setlength{\parindent}{0em}
+\raggedbottom

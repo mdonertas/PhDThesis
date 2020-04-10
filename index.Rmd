@@ -1,5 +1,5 @@
 --- 
-title: "Ageing and Age-related Diseases"
+title: "Computational studies on ageing and age-related diseases"
 subtitle: ""
 author: "Handan Melike Dönertaş"
 degreedate: "April 2020"
@@ -13,14 +13,13 @@ linestretch: 1.5
 toc-depth: 2
 lof: True
 lot: True
-crest: logo.jpg
+crest: img/logo.jpg
 mainfont: Helvetica
 degreetitle: Philosophy of Science
 college: Darwin College
-dept: European Molecular Biology Laboratory,
-  European Bioinformatics Institute
+dept: European Bioinformatics Institute (EMBL-EBI)
 university: University of Cambridge
-dedication: This is my dedication
+dedication: Anne ve anneanneme, her zaman yanımdaydılar ve bugün bu tezi yazabiliyor olmamı onlara borçluyum...
 acknowledgements: |
   `r if(knitr:::is_latex_output()) paste(readLines("acknowledgements.txt"), collapse = '\n  ')`
 declaration:  |
@@ -28,7 +27,7 @@ declaration:  |
 abstract: | 
   `r if(knitr:::is_latex_output()) paste(readLines("abstract.txt"), collapse = '\n  ')`
 site: bookdown::bookdown_site
-bibliography: [book.bib]
+bibliography: [thesis.bib, isildak2020.bib, donertas2020.bib, donertas2020si.bib, temreview.bib, intro.bib]
 biblio-style: apa.csl
 link-citations: yes
 ---
@@ -36,17 +35,63 @@ link-citations: yes
 # Introduction
 
 ```{r include_packages, include = FALSE}
-# This chunk ensures that the thesisdown package is
-# installed and loaded. This thesisdown package includes
-# the template files for the thesis.
-if(!require(devtools))
-  install.packages("devtools", repos = "http://cran.rstudio.com")
-if(!require(thesisdown))
-  devtools::install_github("ismayc/thesisdown")
-if(!require(knitr))
-  install.packages('knitr')
 library(thesisdown)
 library(knitr)
+library(png)
+library(kableExtra)
+library(tidyverse)
+library(ggthemes)
+library(ggpubr)
 ```
 
-<!-- to have the nomencl go to terminal and run: makeindex thesis.nlo -s nomencl.ist -o thesis.nls -->
+```{r setupIndex, include=FALSE}
+knitr::opts_chunk$set(echo = F, cache=T, message=F, warning=F, tidy=TRUE, 
+                      tidy.opts=list(width.cutoff=55), fig.align = 'center')
+```
+
+<!-- makeindex thesis.nlo -s nomencl.ist -o thesis.nls -->
+
+\nomenclature[A]{ROS}{Reactive Oxygen Species}
+\nomenclature[A]{AP}{Antagonistic Pleiotropy Theory of Aging}
+\nomenclature[A]{MA}{Mutation Accumulation Theory of Aging}
+\nomenclature[A]{SASP}{Senescence-Associated Secretory Phenotype}
+\nomenclature[A]{ITP}{NIA Interventions Testing Program}
+\nomenclature[A]{DR}{Dietary Restriction}
+\nomenclature[A]{NSN}{Nutrient-Sensing Network}
+\nomenclature[A]{SVA}{Surrogate Variable Analysis}
+\nomenclature[A]{IQR}{Interquartile Range}
+\nomenclature[A]{GWAS}{Genome-wide Association Study}
+\nomenclature[A]{ARD}{Age-Related Disease}
+\nomenclature[A]{ICD}{International Classification of Diseases}
+\nomenclature[A]{HES}{Hospital Episode Statistics}
+\nomenclature[A]{SR}{Self-Reported}
+\nomenclature[A]{FDR}{False Discovery Rate}
+\nomenclature[A]{SNP}{Single Nucleotide Polymorphisms}
+\nomenclature[A]{eQTL}{Expression Quantitative Trait Loci}
+\nomenclature[A]{PCA}{Principal Component Analysis}
+\nomenclature[A]{MAF}{Minor Allele Frequency}
+\nomenclature[A]{FDA}{U.S. Food and Drug Administration}
+\nomenclature[A]{KS}{Kolmogorov–Smirnov}
+
+<!-- \nomenclature[G]{mTOR}{Mammalian target of rapamycin} -->
+<!-- \nomenclature[G]{TORC1}{mTOR Complex 1} -->
+<!-- \nomenclature[G]{IGF-1}{Insulin-like growth factor 1} -->
+<!-- \nomenclature[G]{AMPK}{AMP-activated protein kinase} -->
+<!-- \nomenclature[G]{SIRT1}{Sirtuin 1} -->
+<!-- \nomenclature[G]{CDKN2A}{Cyclin dependent kinase inhibitor 2A} -->
+<!-- \nomenclature[G]{CDKN2B}{Cyclin dependent kinase inhibitor 2B} -->
+<!-- \nomenclature[G]{APOE}{Apolipoprotein E } -->
+<!-- \nomenclature[G]{FOXO}{Forkhead box protein O} -->
+<!-- \nomenclature[G]{GPR137B}{G Protein-Coupled Receptor 137B} -->
+
+\nomenclature[D]{UKBB}{UK Biobank}
+\nomenclature[D]{GTEx}{Genotype-Tissue Expression}
+\nomenclature[D]{GO BP}{Gene Ontology Biological Process}
+\nomenclature[D]{GO MF}{Gene Ontology Molecular Function}
+\nomenclature[D]{GO CC}{Gene Ontology Cellular Component}
+\nomenclature[D]{CMap}{Connectivity Map}
+
+\nomenclature[H]{DVT}{Deep vein thrombosis}
+\nomenclature[H]{GORD}{Gastro-oesophageal reflux disease}
+\nomenclature[H]{ENT}{Ears, nose and throat}
+

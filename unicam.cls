@@ -897,6 +897,7 @@ wish to left align your text}
 % Dedication
 \newcommand{\Dedication}[1]{\def\@Dedication{#1}}
 \newcommand{\Preface}[1]{\def\@Preface{#1}}
+\newcommand{\@prefacetitle}{Preface}
 
 % Abstract title text
 \newcommand{\@abstracttitle}{Abstract}
@@ -1011,7 +1012,16 @@ wish to left align your text}
 \centering
 }
 
+% ********************************* Preface *********************************
+% The dedication environment makes sure the preface gets its
+% own page, centered
 
+\newenvironment{preface}{
+\cleardoublepage
+\setsinglecolumn
+\chapter*{\centering \Large \@prefacetitle}
+\thispagestyle{empty}
+}
 
 % ******************************* Declaration **********************************
 % The declaration environment puts a large, bold, centered

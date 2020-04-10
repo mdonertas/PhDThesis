@@ -1,0 +1,37 @@
+
+\begin{thenomenclature} 
+\nomgroup{A}
+  \item [{AP}]\begingroup Antagonistic Pleiotropy Theory of Aging\nomeqref {1.0}\nompageref{1}
+  \item [{ARD}]\begingroup Age-Related Disease\nomeqref {1.0}\nompageref{1}
+  \item [{DR}]\begingroup Dietary Restriction\nomeqref {1.0}\nompageref{1}
+  \item [{eQTL}]\begingroup Expression Quantitative Trait Loci\nomeqref {1.0}\nompageref{1}
+  \item [{FDA}]\begingroup U.S. Food and Drug Administration\nomeqref {1.0}\nompageref{1}
+  \item [{FDR}]\begingroup False Discovery Rate\nomeqref {1.0}\nompageref{1}
+  \item [{GWAS}]\begingroup Genome-wide Association Study\nomeqref {1.0}\nompageref{1}
+  \item [{HES}]\begingroup Hospital Episode Statistics\nomeqref {1.0}\nompageref{1}
+  \item [{ICD}]\begingroup International Classification of Diseases\nomeqref {1.0}\nompageref{1}
+  \item [{IQR}]\begingroup Interquartile Range\nomeqref {1.0}\nompageref{1}
+  \item [{ITP}]\begingroup NIA Interventions Testing Program\nomeqref {1.0}\nompageref{1}
+  \item [{KS}]\begingroup Kolmogorov–Smirnov\nomeqref {1.0}\nompageref{1}
+  \item [{MA}]\begingroup Mutation Accumulation Theory of Aging\nomeqref {1.0}\nompageref{1}
+  \item [{MAF}]\begingroup Minor Allele Frequency\nomeqref {1.0}\nompageref{1}
+  \item [{NSN}]\begingroup Nutrient-Sensing Network\nomeqref {1.0}\nompageref{1}
+  \item [{PCA}]\begingroup Principal Component Analysis\nomeqref {1.0}\nompageref{1}
+  \item [{ROS}]\begingroup Reactive Oxygen Species\nomeqref {1.0}\nompageref{1}
+  \item [{SASP}]\begingroup Senescence-Associated Secretory Phenotype\nomeqref {1.0}\nompageref{1}
+  \item [{SNP}]\begingroup Single Nucleotide Polymorphisms\nomeqref {1.0}\nompageref{1}
+  \item [{SR}]\begingroup Self-Reported\nomeqref {1.0}\nompageref{1}
+  \item [{SVA}]\begingroup Surrogate Variable Analysis\nomeqref {1.0}\nompageref{1}
+\nomgroup{D}
+  \item [{CMap}]\begingroup Connectivity Map\nomeqref {1.0}\nompageref{1}
+  \item [{GO BP}]\begingroup Gene Ontology Biological Process\nomeqref {1.0}\nompageref{1}
+  \item [{GO CC}]\begingroup Gene Ontology Cellular Component\nomeqref {1.0}\nompageref{1}
+  \item [{GO MF}]\begingroup Gene Ontology Molecular Function\nomeqref {1.0}\nompageref{1}
+  \item [{GTEx}]\begingroup Genotype-Tissue Expression\nomeqref {1.0}\nompageref{1}
+  \item [{UKBB}]\begingroup UK Biobank\nomeqref {1.0}\nompageref{1}
+\nomgroup{H}
+  \item [{DVT}]\begingroup Deep vein thrombosis\nomeqref {1.0}\nompageref{1}
+  \item [{ENT}]\begingroup Ears, nose and throat\nomeqref {1.0}\nompageref{1}
+  \item [{GORD}]\begingroup Gastro-oesophageal reflux disease\nomeqref {1.0}\nompageref{1}
+
+\end{thenomenclature}

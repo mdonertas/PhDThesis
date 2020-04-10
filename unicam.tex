@@ -23,7 +23,7 @@
 \def\sectionautorefname{Section}
 \def\subsectionautorefname{Subsection}
 \usepackage{caption}
-\captionsetup{width=5in}
+% \captionsetup{width=5in}
 $if(highlighting-macros)$
   $highlighting-macros$
 $endif$
@@ -91,7 +91,9 @@ $endfor$
 \usepackage{enumitem}
 \setlist[enumerate,itemize,description]{topsep=0em}
 \RequirePackage[labelsep=space,tableposition=top]{caption}
-\renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
+\renewcommand{\figurename}{Figure} %to support older versions of captions.sty
+\captionsetup[figure]{format=default,labelfont={small,bf,it},textfont={small,it}, justification=justified, singlelinecheck=off}
+\captionsetup[table]{format=default,labelfont={small,bf,it},textfont={small,it}, justification=justified, singlelinecheck=off}
 \usepackage{booktabs}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
@@ -163,7 +165,7 @@ $if(csl-refs)$
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
   {\par}
 $endif$
-
+\setlength{\parskip}{0.2cm}
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
 \hypersetup{
