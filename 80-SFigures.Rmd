@@ -1,3 +1,7 @@
+`r if(knitr:::is_latex_output()) '\\appendix'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'` 
+
 # Supplementary figures
 
 ## Age-related changes in gene expression heterogeneity in the human brain
@@ -139,7 +143,7 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS33.png")
 ```
 \newpage
 
-# The link between ageing and age-related diseases
+## The link between ageing and age-related diseases
 
 ```{r disFigS2,out.width = '100%', fig.cap=c("The distribution of a) Overall health rating, b) Health satisfaction, c) Smoking status, d) Alcohol drinker status, e) Facial ageing, f) Non-accidental death in close genetic family fields in the UKBB. x-axes show the number of participants, while y-axes are the answers given by the participants."), fig.scap="UK Biobank questionnaire responses."}
 knitr::include_graphics(path = "figures/disease/FigureS2.png")
@@ -229,6 +233,19 @@ knitr::include_graphics(path = "figures/disease/FigureS29.png")
 ```{r disFigS30,out.width = '100%', fig.cap=c("Cancer - disease co-occurrence matrix summarizing relative risk scores and correlations. Each row shows a cancer type and column shows a disease. The color is defined by relative risk scores while the size is determined by $\\phi$ value (the scale is the same as the one used for main figure depicting disease associations between the studied diseases for a better comparison), indicating the robustness. Associations for the 114 diseases and 62 cancers that have at least one relative risk ratio higher than four or lower than minus four ($|log_2RR| ≤ 2$) are plotted."), fig.scap="Cancer - disease co-occurrence matrix summarizing relative risk scores and correlations."}
 knitr::include_graphics(path = "figures/disease/FigureS30.png")
 ```
+
+```{r disFigS31,out.width = '100%', fig.cap=c("Scatter plot between logit(missingness) and PCA corrected heterozygosity measures. Each panel shows a self-declared ethnic background. Vertical red lines show the missing rate of 0.05, and horizontal grey lines show the average heterozygosity in UK Biobank."), fig.scap="Scatter plot between logit(missingness) and PCA corrected heterozygosity measures."}
+knitr::include_graphics(path = "figures/disease/FigureS31.png")
+```
+
+```{r disFigS32,out.width = '50%', fig.cap=c("A heatmap showing the overlap between exclusions based on different criteria. Values show the percent of the column in the row, e.g. 19.4\\% of 'Rec. Exclusions' are in 'Hetero / missing outliers' i) 'Hetero / missing outliers': '22027-0.0' (Outliers for heterozygosity or missing rate), ii) 'Rec. Exclusions': field '22010-0.0' (Recommended genomic analysis exclusions), iii) 'High hetero / missing': '22018-0.0', High heterozygosity rate (after correcting for ancestry) or high missing rate, iv) 'Mixed Ancestry': '22018-0.0', Participant self-declared as having a mixed ancestral background, and v) 'Discordant Sex': as described in the sample QC methods."), fig.scap="A heatmap showing the overlap between sample exclusions based on different criteria."}
+knitr::include_graphics(path = "figures/disease/FigureS32.png")
+```
+
+```{r disFigS33,out.width = '100%', fig.cap=c("(a) Density plots showing the number of SNPs per gene, based on eQTL data (blue) and proximity (brown). (b) Scatter plot between the number of SNPs per gene mapped using genomic proximity (x-axis) or eQTL data (y-axis). Each dot represents a gene and the blue line shows the linear model. Dashed red line shows one-to-one relationship. The rug-plots on the axes show the marginal distribution of genes. "), fig.scap="Relationships between variant-gene associations based on proximity and eQTL data."}
+knitr::include_graphics(path = "figures/disease/FigureS33.png")
+```
+
 \newpage
 ## Drug repurposing for ageing
 

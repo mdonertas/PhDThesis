@@ -7,8 +7,8 @@ Scanning style file /Users/melike/Library/TinyTeX/texmf-dist/makeindex/nomencl/n
 ** Input style error (file = /Users/melike/Library/TinyTeX/texmf-dist/makeindex/nomencl/nomencl.ist, line = 38):
    -- Unknown specifier lethead_flag.
 ....done (12 attributes redefined, 3 ignored).
-Scanning input file thesis.nlo....done (30 entries accepted, 0 rejected).
-Sorting entries....done (147 comparisons).
-Generating output file thesis.nls....done (37 lines written, 0 warnings).
+Scanning input file thesis.nlo....done (38 entries accepted, 0 rejected).
+Sorting entries....done (196 comparisons).
+Generating output file thesis.nls....done (44 lines written, 0 warnings).
 Output written in thesis.nls.
 Transcript written in thesis.ilg.
