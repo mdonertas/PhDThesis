@@ -6,7 +6,6 @@
 
 ## Age-related changes in gene expression heterogeneity in the human brain
 
-### Temporal landscape of the changes in gene expression heterogeneity during brain development and ageing
 
 ```{r hetFigS1,out.width = '100%', fig.cap=c("The distribution of ages for the samples used in the analysis. (a) Scatter plot showing number of samples (x-axis) included in age intervals (y-axis). (b) Distribution of samples in fourth root scale of ages. The horizontal dotted lines reflect the separation point of development and ageing (age of 20). Data sources are indicated with different colors."), fig.scap="Age distribution of individual datasets,"}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS1.png")
@@ -85,7 +84,7 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS14.png")
 <!-- knitr::include_graphics(path = "figures/heterogeneity/FigureS19.png") -->
 <!-- ``` -->
 
-```{r hetFigS20,out.width = '100%', fig.cap=c("Association between GenAge human gene set (n = 214) and age-related heterogeneity. (a) Boxplots show age-related heterogeneity changes ($\\rho$values) (y-axis) of genes from GenAge gene set (orange) and the remaining genes (purple) in different datasets (x-axis) during ageing (lower panel) and development (upper panel). (b) Consistency in age-related heterogeneity increase in genes from GenAge gene set (orange) and the other genes (purple) in ageing (lower panel) and development (upper panel). The x-axis shows the number of datasets among which genes show consistent heterogeneity increase, while the y-axis shows the proportions of the number of genes."), fig.scap="Association between GenAge human gene set and age-related heterogeneity."}
+```{r hetFigS20,out.width = '100%', fig.cap=c("Association between GenAge human gene set (n = 214) and age-related heterogeneity. (a) Boxplots show age-related heterogeneity changes ($\\rho$ values) (y-axis) of genes from GenAge gene set (orange) and the remaining genes (purple) in different datasets (x-axis) during ageing (lower panel) and development (upper panel). (b) Consistency in age-related heterogeneity increase in genes from GenAge gene set (orange) and the other genes (purple) in ageing (lower panel) and development (upper panel). The x-axis shows the number of datasets among which genes show consistent heterogeneity increase, while the y-axis shows the proportions of the number of genes."), fig.scap="Association between GenAge human gene set and age-related heterogeneity."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS20.png")
 ```
 
@@ -248,8 +247,6 @@ knitr::include_graphics(path = "figures/disease/FigureS33.png")
 
 \newpage
 ## Drug repurposing for ageing
-
-### Gene Expression-Based Drug Repurposing to Target Ageing
 
 ```{r drugFigS1,out.width = '100%', fig.cap=c("a) Age distribution of the sub-datasets. b) PCA plots for the sub-datasets (after outlier removal)."), fig.scap="Age distribution of individual datasets."}
 knitr::include_graphics(path = "figures/drug/FigureS1.png")
