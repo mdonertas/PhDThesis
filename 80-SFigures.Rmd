@@ -1,18 +1,18 @@
-# Supplementary Figures
+# Supplementary figures
 
 ## Age-related changes in gene expression heterogeneity in the human brain
 
 ### Temporal landscape of the changes in gene expression heterogeneity during brain development and ageing
 
-```{r hetFigS1,out.width = '100%', fig.cap=c("The distribution of ages for the samples used in the analysis. (a) Scatter plot showing number of samples (x-axis) included in age intervals (y-axis). (b) Distribution of samples in fourth root scale of ages. The horizontal dotted lines reflect the separation point of development and ageing (age of 20). Data sources are indicated with different colors."), fig.scap="Age distribution of individual datasets"}
+```{r hetFigS1,out.width = '100%', fig.cap=c("The distribution of ages for the samples used in the analysis. (a) Scatter plot showing number of samples (x-axis) included in age intervals (y-axis). (b) Distribution of samples in fourth root scale of ages. The horizontal dotted lines reflect the separation point of development and ageing (age of 20). Data sources are indicated with different colors."), fig.scap="Age distribution of individual datasets,"}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS1.png")
 ```
 
-```{r hetFigS2,out.width = '100%', fig.cap=c("Demonstration of the method used to calculate age-related changes in expression level and heterogeneity of two genes during development (a) and ageing (b). Left panels: Age- related expression change is quantified by a linear model using scaled gene expression values (y-axis) and the fourth root of ages (x-axis). Beta values and raw p-values are indicated on the figure. The blue line is drawn based on the linear model, and the red dotted lines represent residuals. Right panels: corresponding scatterplots for the absolute values of residuals (y-axis) and fourth root of age (x-axis). Rho and raw p-values are calculated based on Spearman's correlation test. The blue line is drawn based on a linear model between the absolute value of residuals and the fourth root of age, only for demonstration purposes."), fig.scap="Demonstration of the methods to calculate age-related changes in the expression level and heterogeneity"}
+```{r hetFigS2,out.width = '100%', fig.cap=c("Demonstration of the method used to calculate age-related changes in expression level and heterogeneity of two genes during development (a) and ageing (b). Left panels: Age- related expression change is quantified by a linear model using scaled gene expression values (y-axis) and the fourth root of ages (x-axis). Beta values and raw p-values are indicated on the figure. The blue line is drawn based on the linear model, and the red dotted lines represent residuals. Right panels: corresponding scatterplots for the absolute values of residuals (y-axis) and fourth root of age (x-axis). Rho and raw p-values are calculated based on Spearman's correlation test. The blue line is drawn based on a linear model between the absolute value of residuals and the fourth root of age, only for demonstration purposes."), fig.scap="Demonstration of the methods to calculate age-related changes in the expression level and heterogeneity."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS2.png")
 ```
 
-```{r hetFigS3,out.width = '100%', fig.cap=c("Different age scales yields consistent results. We performed downstream analyses using age in days, age in years, log2 of age in days, and fourth root of age in days. (a) Distribution of correlation coefficients between age-related heterogeneity changes across development and ageing datasets (y-axis), using different age scales (x-axis). (b) The number of genes showing consistent heterogeneity change across all 19 datasets (y-axis), using different age scales. (c) Scatterplots of age- related heterogeneity change values of 11,137 genes from one example dataset (Somel2011\\_PFC) calculated using the fourth root of age in days (y-axis) and different scales including log2 of age in days, age in days and age in years (x-axis) during development (upper panel) and ageing (lower panel)."), fig.scap="Result summary using different age scales."}
+```{r hetFigS3,out.width = '100%', fig.cap=c("Different age scales yields consistent results. We performed downstream analyses using age in days, age in years, log2 of age in days, and fourth root of age in days. (a) Distribution of correlation coefficients between age-related heterogeneity changes across development and ageing datasets (y-axis), using different age scales (x-axis). (b) The number of genes showing consistent heterogeneity change across all 19 datasets (y-axis), using different age scales. (c) Scatterplots of age- related heterogeneity change values of 11,137 genes from one example dataset (Somel2011\\_PFC) calculated using the fourth root of age in days (y-axis) and different scales including log2 of age in days, age in days and age in years (x-axis) during development (upper panel) and ageing (lower panel)."), fig.scap="Summary of the results using different age scales."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS3.png")
 ```
 
@@ -20,11 +20,11 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS3.png")
 knitr::include_graphics(path = "figures/heterogeneity/FigureS4.png")
 ```
 
-```{r hetFigS5,out.width = '100%', fig.cap=c("Permutation test results for dataset correlations of expression and heterogeneity change during development and ageing. We constructed the distributions by calculating median correlation between all possible three independent datasets from three data sources for all permutations. Similarly, the observed values were calculated as a median value for all three independent dataset combinations from three data sources (i.e. the median value of: Median Correlation(Kang2011\\_A1C, Somel2011\\_PFC, Colantuoni2011\\_PFC), Median Correlation(Kang2011\\_AMY , Somel2011\\_CBC, Colantuoni2011\\_PFC), ...). (a, b) Permutation test results for the significance of observed correlation in gene expression change during development (a) and ageing (b). (c, d) Permutation test results for the significance of observed correlation in heterogeneity change during development (c) and ageing (d)."), fig.scap="Permutation test results for dataset correlations of expression and heterogeneity change during development and ageing."}
+```{r hetFigS5,out.width = '100%', fig.cap=c("Results of the permutation tests for dataset correlations of expression and heterogeneity change during development and ageing. We constructed the distributions by calculating median correlation between all possible three independent datasets from three data sources for all permutations. Similarly, the observed values were calculated as a median value for all three independent dataset combinations from three data sources (i.e. the median value of: Median Correlation(Kang2011\\_A1C, Somel2011\\_PFC, Colantuoni2011\\_PFC), Median Correlation(Kang2011\\_AMY , Somel2011\\_CBC, Colantuoni2011\\_PFC), ...). (a, b) Permutation test results for the significance of observed correlation in gene expression change during development (a) and ageing (b). (c, d) Permutation test results for the significance of observed correlation in heterogeneity change during development (c) and ageing (d)."), fig.scap="Results of the permutation tests for dataset correlations of expression and heterogeneity change during development and ageing."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS5.png")
 ```
 
-```{r hetFigS6,out.width = '100%', fig.cap=c("(a, b) Permutation test results for differences between dataset correlations during development and ageing. Distributions were constructed using the median differences between correlations among ageing datasets and development datasets for 1000 permutations, i.e. negative values imply higher correlation among development datasets compared to ageing datasets, while positive values indicate higher correlation during ageing. (a) Distribution of median differences between correlations among age-related expression changes (β values) among ageing datasets and development datasets. (b) The same distribution for heterogeneity changes (ρ values). (c, d) Permutation test results for the median difference in the number of genes showing significant change between ageing and development datasets, in terms of (c) expression change and (d) heterogeneity change. For each permutation, p-values were corrected for multiple testing using FDR method. (e) Permutation test result for the median heterogeneity change differences between ageing and development datasets. Associated p-values are from one-tailed tests."), fig.scap="Permutation test results for differences between dataset correlations, number of significant changes, and median heterogeneity changes during development and ageing."}
+```{r hetFigS6,out.width = '100%', fig.cap=c("(a, b) Results of the permutation tests for differences between dataset correlations during development and ageing. Distributions were constructed using the median differences between correlations among ageing datasets and development datasets for 1000 permutations, i.e. negative values imply higher correlation among development datasets compared to ageing datasets, while positive values indicate higher correlation during ageing. (a) Distribution of median differences between correlations among age-related expression changes (β values) among ageing datasets and development datasets. (b) The same distribution for heterogeneity changes (ρ values). (c, d) Permutation test results for the median difference in the number of genes showing significant change between ageing and development datasets, in terms of (c) expression change and (d) heterogeneity change. For each permutation, p-values were corrected for multiple testing using FDR method. (e) Permutation test result for the median heterogeneity change differences between ageing and development datasets. Associated p-values are from one-tailed tests."), fig.scap="Results of the permutation tests for differences between dataset correlations, number of significant changes, and median heterogeneity changes during development and ageing."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS6.png")
 ```
 
@@ -45,11 +45,11 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS10.png")
 ```
 
 
-```{r hetFigS11,out.width = '100%', fig.cap=c("Heterogeneity trajectories in development for the genes that were clustered according to their heterogeneities in ageing, using k-means clustering method. The x-axis shows the age and the y-axis shows scaled heterogeneity level (residuals from linear model). Spline curves represent mean age-related heterogeneity changes of genes in each cluster, from each dataset and brain region. The colors and line-types of curves specify different brain regions and data sources, respectively. Different patterns observed between age of 5 to 8 could be biologically relevant but it is important to note that the number of samples in this age range is low. The age distribution of samples in development datasets is given as a bar plot in upper right corner."), fig.scap="Heterogeneity trajectories in development for the genes that were clustered according to their heterogeneities in ageing."}
+```{r hetFigS11,out.width = '100%', fig.cap=c("Heterogeneity trajectories in development for the genes that were clustered according to their heterogeneities in ageing, using k-means clustering method. The x-axis shows the age and the y-axis shows scaled heterogeneity level (residuals from linear model). Spline curves represent mean age-related heterogeneity changes of genes in each cluster, from each dataset and brain region. The colors and line-types of curves specify different brain regions and data sources, respectively. Different patterns observed between age of 5 to 8 could be biologically relevant but it is important to note that the number of samples in this age range is low. The age distribution of samples in development datasets is given as a bar plot in upper right corner."), fig.scap="Heterogeneity trajectories in development for the genes that were clustered according to their heterogeneity levels in ageing."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS11.png")
 ```
 
-```{r hetFigS12,out.width = '100%', fig.cap=c("Gene expression trajectories of the genes that were clustered according to their heterogeneities, using k-mean clustering method. The x-axis shows the age on the fourth root scale, and the y-axis shows scaled gene expression values. Spline curves represent mean age-related expression changes of genes in each cluster, from each dataset and brain region. The colors and line-types of curves specify different brain regions and data sources, respectively."), fig.scap="Gene expression trajectories of the genes that were clustered according to their heterogeneities."}
+```{r hetFigS12,out.width = '100%', fig.cap=c("Gene expression trajectories of the genes that were clustered according to their heterogeneities, using k-mean clustering method. The x-axis shows the age on the fourth root scale, and the y-axis shows scaled gene expression values. Spline curves represent mean age-related expression changes of genes in each cluster, from each dataset and brain region. The colors and line-types of curves specify different brain regions and data sources, respectively."), fig.scap="Gene expression trajectories of the genes that were clustered according to their heterogeneity levels."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS12.png")
 ```
 
@@ -57,31 +57,31 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS12.png")
 knitr::include_graphics(path = "figures/heterogeneity/FigureS13.png")
 ```
 
-```{r hetFigS14,out.width = '80%', fig.cap=c("Heatmap showing the association between different heterogeneity trajectories and KEGG pathways that are significantly associated with a consistent change in heterogeneity during ageing. Heterogeneity trajectories are based on the definitions in the main text and i) gr1 includes clusters 3 and 7, ii) gr2 includes clusters 4, 5, and 8, and iii) gr3 includes clusters 1, 2, and 6. The colors represent the Odd’s ratio, where red shows enrichment and blue shows depletion."), fig.scap="Association between different heterogeneity trajectories and KEGG pathways that are significantly associated with a consistent change in heterogeneity during ageing"}
+```{r hetFigS14,out.width = '80%', fig.cap=c("Heatmap showing the association between different heterogeneity trajectories and KEGG pathways that are significantly associated with a consistent change in heterogeneity during ageing. Heterogeneity trajectories are based on the definitions in the main text and i) gr1 includes clusters 3 and 7, ii) gr2 includes clusters 4, 5, and 8, and iii) gr3 includes clusters 1, 2, and 6. The colors represent the Odd’s ratio, where red shows enrichment and blue shows depletion."), fig.scap="Association between different heterogeneity trajectories and KEGG pathways that are significantly associated with a consistent change in heterogeneity during ageing."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS14.png")
 ```
 
-<!-- ```{r hetFigS15,out.width = '100%', fig.cap=c("A heatmap of the normalized enrichment scores for KEGG pathways that are significantly associated with consistent heterogeneity in ageing (rows) and datasets (columns). Datasets also include a new column, named Median, which includes, for each gene, the median of the changes in heterogeneity across datasets. The color represents normalized enrichment scores; red: positive, blue: negative and the darkness specifies how strong the association is."), fig.scap="A heatmap of the normalized enrichment scores for KEGG pathways that are significantly associated with consistent heterogeneity in ageing and datasets"} -->
+<!-- ```{r hetFigS15,out.width = '100%', fig.cap=c("A heatmap of the normalized enrichment scores for KEGG pathways that are significantly associated with consistent heterogeneity in ageing (rows) and datasets (columns). Datasets also include a new column, named Median, which includes, for each gene, the median of the changes in heterogeneity across datasets. The color represents normalized enrichment scores; red: positive, blue: negative and the darkness specifies how strong the association is."), fig.scap="A heatmap of the normalized enrichment scores for KEGG pathways that are significantly associated with consistent heterogeneity in ageing and datasets."} -->
 <!-- knitr::include_graphics(path = "figures/heterogeneity/FigureS15.png") -->
 <!-- ``` -->
 
-<!-- ```{r hetFigS16,out.width = '80%', fig.cap=c("The same as Figure S15 but for Gene Ontology Biological Process categories."), fig.scap="A heatmap of the normalized enrichment scores for Gene Ontology Biological Process categories that are significantly associated with consistent heterogeneity in ageing and datasets"} -->
+<!-- ```{r hetFigS16,out.width = '80%', fig.cap=c("The same as Figure S15 but for Gene Ontology Biological Process categories."), fig.scap="A heatmap of the normalized enrichment scores for Gene Ontology Biological Process categories that are significantly associated with consistent heterogeneity in ageing and datasets."} -->
 <!-- knitr::include_graphics(path = "figures/heterogeneity/FigureS16.png") -->
 <!-- ``` -->
 
-<!-- ```{r hetFigS17,out.width = '100%', fig.cap=c("The same as Figure S15 but for Gene Ontology Molecular Function categories."), fig.scap="A heatmap of the normalized enrichment scores for Gene Ontology Molecular Function categories that are significantly associated with consistent heterogeneity in ageing and datasets"} -->
+<!-- ```{r hetFigS17,out.width = '100%', fig.cap=c("The same as Figure S15 but for Gene Ontology Molecular Function categories."), fig.scap="A heatmap of the normalized enrichment scores for Gene Ontology Molecular Function categories that are significantly associated with consistent heterogeneity in ageing and datasets."} -->
 <!-- knitr::include_graphics(path = "figures/heterogeneity/FigureS17.png") -->
 <!-- ``` -->
 
-<!-- ```{r hetFigS18,out.width = '80%', fig.cap=c("The same as Figure S15 but for Gene Ontology Cellular Component categories."), fig.scap="A heatmap of the normalized enrichment scores for Gene Ontology Cellular Component categories that are significantly associated with consistent heterogeneity in ageing and datasets"} -->
+<!-- ```{r hetFigS18,out.width = '80%', fig.cap=c("The same as Figure S15 but for Gene Ontology Cellular Component categories."), fig.scap="A heatmap of the normalized enrichment scores for Gene Ontology Cellular Component categories that are significantly associated with consistent heterogeneity in ageing and datasets."} -->
 <!-- knitr::include_graphics(path = "figures/heterogeneity/FigureS18.png") -->
 <!-- ``` -->
 
-<!-- ```{r hetFigS19,out.width = '100%', fig.cap=c("The same as Figure S15 but for Reactome pathways."), fig.scap="A heatmap of the normalized enrichment scores for Reactome pathways that are significantly associated with consistent heterogeneity in ageing and datasets"} -->
+<!-- ```{r hetFigS19,out.width = '100%', fig.cap=c("The same as Figure S15 but for Reactome pathways."), fig.scap="A heatmap of the normalized enrichment scores for Reactome pathways that are significantly associated with consistent heterogeneity in ageing and datasets."} -->
 <!-- knitr::include_graphics(path = "figures/heterogeneity/FigureS19.png") -->
 <!-- ``` -->
 
-```{r hetFigS20,out.width = '100%', fig.cap=c("Association between GenAge human gene set (n = 214) and age-related heterogeneity. (a) Boxplots show age-related heterogeneity changes ($\\rho$values) (y-axis) of genes from GenAge gene set (orange) and the remaining genes (purple) in different datasets (x-axis) during ageing (lower panel) and development (upper panel). (b) Consistency in age-related heterogeneity increase in genes from GenAge gene set (orange) and the other genes (purple) in ageing (lower panel) and development (upper panel). The x-axis shows the number of datasets among which genes show consistent heterogeneity increase, while the y-axis shows the proportions of the number of genes."), fig.scap="Association between GenAge human gene set and age-related heterogeneity"}
+```{r hetFigS20,out.width = '100%', fig.cap=c("Association between GenAge human gene set (n = 214) and age-related heterogeneity. (a) Boxplots show age-related heterogeneity changes ($\\rho$values) (y-axis) of genes from GenAge gene set (orange) and the remaining genes (purple) in different datasets (x-axis) during ageing (lower panel) and development (upper panel). (b) Consistency in age-related heterogeneity increase in genes from GenAge gene set (orange) and the other genes (purple) in ageing (lower panel) and development (upper panel). The x-axis shows the number of datasets among which genes show consistent heterogeneity increase, while the y-axis shows the proportions of the number of genes."), fig.scap="Association between GenAge human gene set and age-related heterogeneity."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS20.png")
 ```
 
@@ -105,7 +105,7 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS24.png")
 knitr::include_graphics(path = "figures/heterogeneity/FigureS25.png")
 ```
 
-```{r hetFigS26,out.width = '100%', fig.cap=c("Heatmaps for 38 datasets showing the heterogeneity levels (residuals) for each individual (columns) in 147 genes that show consistent increase across all ageing datasets (rows). The color shows the rank of individuals with respect to their heterogeneity for that particular gene. Darker colors show individuals with the highest heterogeneity for that particular gene. Genes are clustered using the heterogeneity trajectories in Figure 4 and individuals are ordered by age (darker green in column annotation showing older ages).  "), fig.scap="Heatmaps for 38 datasets showing the heterogeneity levels for each individualin 147 genes that show consistent increase across all ageing datasets."}
+```{r hetFigS26,out.width = '100%', fig.cap=c("Heatmaps for 38 datasets showing the heterogeneity levels (residuals) for each individual (columns) in 147 genes that show consistent increase across all ageing datasets (rows). The color shows the rank of individuals with respect to their heterogeneity for that particular gene. Darker colors show individuals with the highest heterogeneity for that particular gene. Genes are clustered using the heterogeneity trajectories in Figure 4 and individuals are ordered by age (darker green in column annotation showing older ages).  "), fig.scap="Heatmaps for 38 datasets showing the heterogeneity levels for each individual in 147 genes that show consistent increase across all ageing datasets."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS26.png")
 ```
 
@@ -117,11 +117,11 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS27.png")
 knitr::include_graphics(path = "figures/heterogeneity/FigureS28.png")
 ```
 
-```{r hetFigS29,out.width = '100%', fig.cap=c("Age distribution of the individuals used in GTEx RNA-Seq datasets."), fig.scap="Age distribution of the individuals used in GTEx RNA-Seq datasets."}
+```{r hetFigS29,out.width = '100%', fig.cap=c("Age distribution of the individuals used in GTEx RNA-Seq datasets."), fig.scap="Age distribution of the individuals used in GTEx RNA-seq datasets."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS29.png")
 ```
 
-```{r hetFigS30,out.width = '100%', fig.cap=c("Distribution of age-related changes in heterogeneity ($\\rho$ values) (x-axis) in different GTEx datasets, corresponding to different brain regions in (y-axis). The red dotted vertical line (at x = 0) reflects no change in heterogeneity. "), fig.scap="Distribution of age-related changes in heterogeneity ($\\rho$ values)in different GTEx datasets, corresponding to different brain regions."}
+```{r hetFigS30,out.width = '100%', fig.cap=c("Distribution of age-related changes in heterogeneity ($\\rho$ values) (x-axis) in different GTEx datasets, corresponding to different brain regions in (y-axis). The red dotted vertical line (at x = 0) reflects no change in heterogeneity. "), fig.scap="Distribution of age-related changes in heterogeneity ($\\rho$ values) in different GTEx datasets, corresponding to different brain regions."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS30.png")
 ```
 
@@ -138,7 +138,8 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS32.png")
 knitr::include_graphics(path = "figures/heterogeneity/FigureS33.png")
 ```
 \newpage
-## Ageing and Diseases
+
+# The link between ageing and age-related diseases
 
 ```{r disFigS2,out.width = '100%', fig.cap=c("The distribution of a) Overall health rating, b) Health satisfaction, c) Smoking status, d) Alcohol drinker status, e) Facial ageing, f) Non-accidental death in close genetic family fields in the UKBB. x-axes show the number of participants, while y-axes are the answers given by the participants."), fig.scap="UK Biobank questionnaire responses."}
 knitr::include_graphics(path = "figures/disease/FigureS2.png")
@@ -196,7 +197,7 @@ knitr::include_graphics(path = "figures/disease/FigureS18.png")
 knitr::include_graphics(path = "figures/disease/FigureS21.png")
 ```
 
-```{r disFigS22,out.width = '100%', fig.cap=c("a) The difference between genetic similarity within and across age-of-onset clusters. Y-axis shows the genetic similarity on log2 scale (see Supplementary Methods). b) The same as a) but the y-axis is corrected for disease category and co-occurrence using a linear model. "), fig.scap="The difference between genetic similarity within and across age-of-onset clusters"}
+```{r disFigS22,out.width = '100%', fig.cap=c("a) The difference between genetic similarity within and across age-of-onset clusters. Y-axis shows the genetic similarity on log2 scale (see Supplementary Methods). b) The same as a) but the y-axis is corrected for disease category and co-occurrence using a linear model. "), fig.scap="The difference between genetic similarity within and across age-of-onset clusters."}
 knitr::include_graphics(path = "figures/disease/FigureS22.png")
 ```
 
@@ -204,12 +205,12 @@ knitr::include_graphics(path = "figures/disease/FigureS22.png")
 knitr::include_graphics(path = "figures/disease/FigureS23.png")
 ```
 
-```{r disFigS24,out.width = '100%', fig.cap=c("Significant genetic similarities (p≤0.01) calculated using independent LD blocks. Diseases (n=50) with at least one significant genetic similarity are displayed. The color shows the genetic similarity score, darker red means a higher score. Annotation columns show the age-of-onset clusters and disease categories. The diseases are clustered by the hierarchical clustering of genetic similarity scores."), fig.scap="Significant genetic similarities calculated using independent LD blocks"}
+```{r disFigS24,out.width = '100%', fig.cap=c("Significant genetic similarities (p≤0.01) calculated using independent LD blocks. Diseases (n=50) with at least one significant genetic similarity are displayed. The color shows the genetic similarity score, darker red means a higher score. Annotation columns show the age-of-onset clusters and disease categories. The diseases are clustered by the hierarchical clustering of genetic similarity scores."), fig.scap="Significant genetic similarities calculated using independent LD blocks."}
 knitr::include_graphics(path = "figures/disease/FigureS24.png")
 ```
 
 
-```{r disFigS26,out.width = '100%', fig.cap=c("The distribution of Median Risk Allele Frequencies (RAF, y-axis) for 100 randomly sampled LD blocks, for 1,000 times, using variants a) associated with one disease, b) associated with one cluster, c) with antagonistic association between cluster 1 and cluster 2. ns: p>0.05, *:p≤0.05, **: p≤0.01, ***: p≤0.001, ****: p≤0.00001"), fig.scap="The distribution of Median Risk Allele Frequencies for LD blocks."}
+```{r disFigS26,out.width = '100%', fig.cap=c("The distribution of Median Risk Allele Frequencies (RAF, y-axis) for 100 randomly sampled LD blocks, for 1,000 times, using variants a) associated with one disease, b) associated with one cluster, c) with antagonistic association between cluster 1 and cluster 2. ns: p>0.05, *:p≤0.05, **: p≤0.01, ***: p≤0.001, ****: p≤0.00001"), fig.scap="The distribution of the median risk allele frequencies for LD blocks."}
 knitr::include_graphics(path = "figures/disease/FigureS26.png")
 ```
 
@@ -233,35 +234,35 @@ knitr::include_graphics(path = "figures/disease/FigureS30.png")
 
 ### Gene Expression-Based Drug Repurposing to Target Ageing
 
-```{r drugFigS1,out.width = '100%', fig.cap=c("a) Age distribution of the sub-datasets. b) PCA plots for the sub-datasets (after outlier removal)."), fig.scap="Age distribution of individual datasets"}
+```{r drugFigS1,out.width = '100%', fig.cap=c("a) Age distribution of the sub-datasets. b) PCA plots for the sub-datasets (after outlier removal)."), fig.scap="Age distribution of individual datasets."}
 knitr::include_graphics(path = "figures/drug/FigureS1.png")
 ```
 
-```{r drugFigS2,out.width = '100%', fig.cap=c("The number of significant changes and the distributions of Spearman's correlation coefficient between gene expression and age for each dataset")}
+```{r drugFigS2,out.width = '100%', fig.cap=c("The number of significant changes and the distributions of Spearman's correlation coefficient between gene expression and age for each dataset.")}
 knitr::include_graphics(path = "figures/drug/FigureS2.png")
 ```
 
-```{r drugFigS3,out.width = '100%', fig.cap=c("Scaled gene expression profile for the down-regulated genes in the microarray ageing profile. Each line shows one dataset, and the colours represent different data sources. The lines are generated using geom\\_smooth function with method = loess argument in the R ggplot2 package."), fig.scap = "Gene expression profiles for the down-regulated genes in the ageing signature"}
+```{r drugFigS3,out.width = '100%', fig.cap=c("Scaled gene expression profile for the down-regulated genes in the microarray ageing profile. Each line shows one dataset, and the colours represent different data sources. The lines are generated using geom\\_smooth function with method = loess argument in the R ggplot2 package."), fig.scap = "Gene expression profiles for the down-regulated genes in the ageing signature."}
 knitr::include_graphics(path = "figures/drug/FigureS3.png")
 ```
 
-```{r drugFigS4,out.width = '100%', fig.cap=c("Scaled gene expression profile for the up-regulated genes in the microarray ageing profile. Each line shows one dataset, and the colours represent different data sources. The lines are generated using geom\\_smooth function with method = loess argument in the R ggplot2 package."), fig.scap = "Gene expression profiles for the up-regulated genes in the ageing signature"}
+```{r drugFigS4,out.width = '100%', fig.cap=c("Scaled gene expression profile for the up-regulated genes in the microarray ageing profile. Each line shows one dataset, and the colours represent different data sources. The lines are generated using geom\\_smooth function with method = loess argument in the R ggplot2 package."), fig.scap = "Gene expression profiles for the up-regulated genes in the ageing signature."}
 knitr::include_graphics(path = "figures/drug/FigureS4.png")
 ```
 
-```{r drugFigS6,out.width = '100%', fig.cap=c("Distribution of the number of shared expression changes across datasets in 1000 permutations. a) Shared down-regulation across microarray datasets (expected number=0), b) shared up-regulation across microarray datasets (expected number=0), c) shared down-regulation across GTEx datasets (expected number=127), and d) shared up-regulation across GTEx datasets (expected number=131.5)."), fig.scap = "Distributions of the expected number of up- and down-regulated genes in the ageing signatures under null hypothesis"}
+```{r drugFigS6,out.width = '100%', fig.cap=c("Distribution of the number of shared expression changes across datasets in 1000 permutations. a) Shared down-regulation across microarray datasets (expected number=0), b) shared up-regulation across microarray datasets (expected number=0), c) shared down-regulation across GTEx datasets (expected number=127), and d) shared up-regulation across GTEx datasets (expected number=131.5)."), fig.scap = "Distributions of the expected number of up- and down-regulated genes in the ageing signatures under null hypothesis."}
 knitr::include_graphics(path = "figures/drug/FigureS6.png")
 ```
 
-```{r drugFigS5,out.width = '100%', fig.cap=c("Pairwise Spearman's rank correlation coefficients across all datasets, including GTEx. The intensity of the colours on the heatmap shows the magnitude of the correlation coefficient"), fig.scap = "Pairwise correlations across all datasets"}
+```{r drugFigS5,out.width = '100%', fig.cap=c("Pairwise Spearman's rank correlation coefficients across all datasets, including GTEx. The intensity of the colours on the heatmap shows the magnitude of the correlation coefficient"), fig.scap = "Pairwise correlations across all datasets."}
 knitr::include_graphics(path = "figures/drug/FigureS5.png")
 ```
 
-```{r drugFigS7,out.width = '100%', fig.cap=c("Scatter plot for the GO BP category log2 odds ratios calculated for the microarray and GTEx ageing signature, using Fisher's test implemented in the topGO package."), fig.scap = "GO BP Category enrichment score distributions for ageing signatures"}
+```{r drugFigS7,out.width = '100%', fig.cap=c("Scatter plot for the GO BP category log2 odds ratios calculated for the microarray and GTEx ageing signature, using Fisher's test implemented in the topGO package."), fig.scap = "GO BP Category enrichment score distributions for ageing signatures."}
 knitr::include_graphics(path = "figures/drug/FigureS7.png")
 ```
 
-```{r drugFigS8,out.width = '100%', fig.cap=c("Scatter plot of the drug similarity scores for a) all drugs and b) only significant drugs. x-axes show the similarity score based on the microarray ageing signature, whereas y-axes show similarity score calculated using the GTEx ageing signature. The size of the data points represents the statistical significance whereas the colour shows whether a drug is previously tested on model organisms for lifespan extension (based on DrugAge database)."), fig.scap = "Correlation between CMap results generated using the microarray and GTEx ageing signatures"}
+```{r drugFigS8,out.width = '100%', fig.cap=c("Scatter plot of the drug similarity scores for a) all drugs and b) only significant drugs. x-axes show the similarity score based on the microarray ageing signature, whereas y-axes show similarity score calculated using the GTEx ageing signature. The size of the data points represents the statistical significance whereas the colour shows whether a drug is previously tested on model organisms for lifespan extension (based on DrugAge database)."), fig.scap = "Correlation between CMap results generated using the microarray and GTEx ageing signatures."}
 knitr::include_graphics(path = "figures/drug/FigureS8.png")
 ```
 
@@ -269,14 +270,14 @@ knitr::include_graphics(path = "figures/drug/FigureS8.png")
 knitr::include_graphics(path = "figures/drug/FigureS9.png")
 ```
 
-```{r drugFigS12,out.width = '100%', fig.cap=c("Scatter plot of the drug similarity scores based on the overlap of the signatures (50 up and 48 down regulated genes) and a) microarray signature and b) GTEx signature. The size of the data points represents the statistical significance whereas the colour shows whether the drug is significant based on the overlap of the signatures. The shape represents whether the drug is one of the 24 hits reported in the main text."), fig.scap = "Correlation between CMap results generated using the microarray and a combined ageing signature"}
+```{r drugFigS12,out.width = '100%', fig.cap=c("Scatter plot of the drug similarity scores based on the overlap of the signatures (50 up and 48 down regulated genes) and a) microarray signature and b) GTEx signature. The size of the data points represents the statistical significance whereas the colour shows whether the drug is significant based on the overlap of the signatures. The shape represents whether the drug is one of the 24 hits reported in the main text."), fig.scap = "Correlation between CMap results generated using the microarray and a combined ageing signature."}
 knitr::include_graphics(path = "figures/drug/FigureS12.png")
 ```
 
-```{r drugFigS10,out.width = '100%', fig.cap=c("a-b) Correlation matrices showing drug-drug similarities calculated using pairwise Spearman's correlation coefficients between normalized enrichment scores for a) KEGG pathways and b) GO Biological Process categories. Drugs are clustered using hierarchical clustering. The rectangles are drawn by cutting the hierarchical tree (the number of clusters is decided based on the visual inspection of the heatmap). Labels written in green are the known prolongevity drugs based on the DrugAge database, in blue are the drugs in the same cluster with at least one pro-longevity drug, in black are the ones which did not cluster with anything and in orange are the ones that did not cluster any pro-longevity drug but are similar to each other. c) Summary matrix showing the outcome of each approach used, KEGG and GO GSEA results from panel (a) and (b) and literature search given at the beginning of this section. The colour code is the same as panel (a) and (b), and dark orange shows likely negative effects, thus pro-ageing drugs."), fig.scap = "Similarities between significant drug hits at the gene expression, GO BP, KEGG and literature evidence levels"}
+```{r drugFigS10,out.width = '100%', fig.cap=c("a-b) Correlation matrices showing drug-drug similarities calculated using pairwise Spearman's correlation coefficients between normalized enrichment scores for a) KEGG pathways and b) GO Biological Process categories. Drugs are clustered using hierarchical clustering. The rectangles are drawn by cutting the hierarchical tree (the number of clusters is decided based on the visual inspection of the heatmap). Labels written in green are the known prolongevity drugs based on the DrugAge database, in blue are the drugs in the same cluster with at least one pro-longevity drug, in black are the ones which did not cluster with anything and in orange are the ones that did not cluster any pro-longevity drug but are similar to each other. c) Summary matrix showing the outcome of each approach used, KEGG and GO GSEA results from panel (a) and (b) and literature search given at the beginning of this section. The colour code is the same as panel (a) and (b), and dark orange shows likely negative effects, thus pro-ageing drugs."), fig.scap = "Similarities between significant drug hits at the gene expression, GO BP, KEGG and literature evidence levels."}
 knitr::include_graphics(path = "figures/drug/FigureS10.png")
 ```
 
-```{r drugFigS11,out.width = '75%', fig.cap=c("a) Heatmap showing the pairwise correlation coefficients among GTEx datasets, corresponding 17 major and 35 minor tissue types. The intensity of the colours on the heatmap shows the magnitude of the correlation coefficient. b and d) The same as (a) but using only the genes in brain ageing signature compiled using microarray (a) and GTEx brain dataset (b). c)Heatmap showing the proportion of the changes in the same direction with ageing signature compiled using microarray signature. The colour shows the similarity (red), and dissimilarity (blue) based on the majority of change. The labels show the proportion of the similar type of change, where the size of the labels shows the statistical significance. e) The same as (c) but for GTEx ageing signature compiled using only the brain data."), fig.scap = "Gene expression profiles of the ageing signature in different tissues"}
+```{r drugFigS11,out.width = '75%', fig.cap=c("a) Heatmap showing the pairwise correlation coefficients among GTEx datasets, corresponding 17 major and 35 minor tissue types. The intensity of the colours on the heatmap shows the magnitude of the correlation coefficient. b and d) The same as (a) but using only the genes in brain ageing signature compiled using microarray (a) and GTEx brain dataset (b). c)Heatmap showing the proportion of the changes in the same direction with ageing signature compiled using microarray signature. The colour shows the similarity (red), and dissimilarity (blue) based on the majority of change. The labels show the proportion of the similar type of change, where the size of the labels shows the statistical significance. e) The same as (c) but for GTEx ageing signature compiled using only the brain data."), fig.scap = "Gene expression profiles of the ageing signature in different tissues."}
 knitr::include_graphics(path = "figures/drug/FigureS11.png")
 ```

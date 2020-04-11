@@ -1,10 +1,10 @@
-# Concluding Remarks {#concludingRemarks}
+# Concluding remarks {#concludingRemarks}
 
 In this thesis, the aim was to approach a better understanding of ageing through computational studies. In particular, age-related change in heterogeneity, the link between ageing and age-related diseases, and drug repurposing for ageing were discussed. In this chapter, I aim to both summarize the major findings and also give a future perspective focusing on each chapter separately. Finally, I will summarize future directions by which computational studies can facilitate research on ageing. 
 
-## Overview and Future Perspective
+## Overview and future perspective
 
-### Age-related change in gene expression heterogeneity
+### Age-related changes in gene expression heterogeneity
 
 In Chapter \@ref(HeterogeneityChapter), the changes in gene expression heterogeneity during postnatal development and ageing were explored. The main conclusions of this study were:
 
@@ -55,7 +55,7 @@ Rediscovery of a significant number of known pro-longevity drugs suggests our me
 * Another aspect that we have not addressed in this study is the real-world application of the identified drugs, including factors such as the drug-drug interactions, the age at which drugs could be supplied, the potential effects of long-term use, bioavailability in humans. Unfortunately, computational studies require more comprehensive experimental datasets that can allow predictive modelling of these factors.
 * Lastly, predictive modelling of the overall effect of these drugs on the overall health, healthspan and life-span can help prioritization of the candidates. Today, it is not possible to perform this task for humans as the human clinical trials for ageing interventions are just beginning. However, thanks to DrugAge database, which records the drug, organism, and outcome of the lifespan assays, future studies employing machine learning approaches can prioritize drugs that may have the highest effect on lifespan.
 
-## Future Directions in Computational Biology of Ageing
+## Future directions in computational biology of ageing
 
 Our understanding of the biology of ageing is improving every day. Theoretical, experimental, clinical, and applied research on ageing has provided significant insight into the mechanisms and interventions to achieve better health in old age. However, so far, these realms of research have been disconnected. The studies presented in this thesis exemplify how computational biology could help to build bridges between different disciplines. However, the potential of computational biology is not limited to the examples I presented. In this section, I summarize the improvements in computational research that can help us increase our understanding of the biology of ageing and provide the toolset to tackle the challenges of age-related decline in health. 
 
@@ -65,7 +65,7 @@ Ageing has been studied at the population, organismal, tissue, cell-type levels.
 
 Our understanding of heterogeneity in ageing can also benefit from single-cell technologies. At the moment, studies approach heterogeneity as a stochastic noise; however, in Chapter 2, I presented that there is some consistency in increased heterogeneity across datasets. This suggests, there might be a mechanism contributing to the age-related increase in heterogeneity. Studying genetic and epigenetic mutations at the single-cell level can help us understand the source of heterogeneity. 
 
-### Integrative approaches for ageing
+### Integrative biology of ageing
 
 All the studies I have presented in this thesis further emphasized the importance of having data from multiple layers of information flow (e.g. genome, epigenome, transcriptome, proteome, metabolome). Ageing is a complex phenotype that is far from being driven by just a limited number of genes. Understanding the regulatory changes at multiple levels, we can approach a better intervention strategy. Moreover, it is plausible to argue that the information flow is disrupted at multiple stages during ageing. So far, studies showed an age-related decline in epigenetic stability, which interrupts information flow at a very top level. There are multiple studies focusing on restoring the youthful epigenetic state using drugs targeting epigenetic machinery. However, at the moment we do not know whether the flow of information is disrupted at multiple levels or not. By studying the interactions between different layers of information, we can approach understanding the source of increased entropy during ageing. 
 

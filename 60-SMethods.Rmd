@@ -169,7 +169,7 @@ ds = data.frame(x = c('Disease A','Not Disease A'),
                 `DiseaseB` = c('Nab','Nnab'),
                 `NotDiseaseB` = c('Nanb','Nnanb'),
                 `Total` = c('Ta','Tna'))
-kable(ds, format = "latex", booktabs = T,  caption = 'Contingency table for disease comorbidities.', longtable=T) %>%
+kable(ds, format = "latex", booktabs = T,  caption = 'Contingency table for disease co-occurrence calculations.', longtable=T) %>%
     kable_styling(font_size = 12)
 # kable(dsetinfo, format = 'pandoc', booktabs = T,  caption = 'Dataset information', longtable=T, font_size = 8)
 ```
@@ -353,7 +353,7 @@ Using SNP-gene associations based on GTEx v7 eQTL data (accessed on 04.09.2018) 
 
 **Comparison of proximity and eQTL based mapping**
 
-```{r disFigS33,out.width = '100%', fig.cap=c("(a) Density plots showing the number of SNPs per gene, based on eQTL data (blue) and proximity (brown). (b) Scatter plot between the number of SNPs per gene mapped using genomic proximity (x-axis) or eQTL data (y-axis). Each dot represents a gene and the blue line shows the linear model. Dashed red line shows one-to-one relationship. The rug-plots on the axes show the marginal distribution of genes. "), fig.scap="Relationships between SNP-gene associations based on proximity and eQTL data."}
+```{r disFigS33,out.width = '100%', fig.cap=c("(a) Density plots showing the number of SNPs per gene, based on eQTL data (blue) and proximity (brown). (b) Scatter plot between the number of SNPs per gene mapped using genomic proximity (x-axis) or eQTL data (y-axis). Each dot represents a gene and the blue line shows the linear model. Dashed red line shows one-to-one relationship. The rug-plots on the axes show the marginal distribution of genes. "), fig.scap="Relationships between variant-gene associations based on proximity and eQTL data."}
 knitr::include_graphics(path = "figures/disease/FigureS33.png")
 ```
 

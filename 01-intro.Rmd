@@ -40,7 +40,7 @@ The discovery of genes and pathways that regulate lifespan in model organisms ha
 
 The first signals that genetics may play a role in modulation of lifespan started to emerge around 40 years ago when the first long-lived strains of *Caenorhabditis elegans* were isolated [@Klass1983]. The genetic element first discovered to modulate lifespan was *age-1*. However, the impact of this gene was controversial as it also affects total food intake and possibly causing caloric restriction. Later, Friedman and Johnson showed 65% lifespan extension was due to the mutation itself, not a reduction in the caloric intake [@Friedman1988]. Ten years later, Kenyon et al. showed *daf-2* mutant worms also have potential to double their lifespans and more importantly without a cost on their reproductive success [@Kenyon1993].  *daf-2* also codes for a protein in the NSN, a homologue of IGF-1 receptor in humans. Many other discoveries followed these and scientists found different pathways regulating lifespan in model organisms. @Lopez-Otin2013, later reviewed these genetic elements together with the changes that occur in physiological ageing in mammals to compile a set of characteristics that define the ageing phenotype. Authors considered three criteria to consider these characteristics as hallmarks: i) they should manifest themselves in physiological ageing, ii) their experimental exacerbation should worsen the ageing phenotype, and iii) their reduction should improve lifespan or at least delay functional decline. Not all of the molecular changes can be tested extensively in multiple organisms, and some of the hallmarks do not satisfy all three. Another layer of complexity comes from the interconnectedness between hallmarks as they are not independent. Nevertheless, the list of 9 hallmarks presents the functional characteristics associated with ageing. 
 
-### Primary Hallmarks {#introPrimaryHallmarks}
+### Primary hallmarks {#introPrimaryHallmarks}
 
 These are the hallmarks that explain likely causes of cellular damage. These have adverse effects on the functionality, and their reduction would ameliorate the ageing process.
 
@@ -52,7 +52,7 @@ These are the hallmarks that explain likely causes of cellular damage. These hav
 
 **Loss of proteostasis:** Proteostasis, or protein homeostasis, is the sum of all activities to ensure the stability and functionality of the proteome. It involves many regulators, including molecular chaperones, protein posttranslational modification enzymes, proteasome, and lysosome [@Hipp2019]. Accumulation of nonfunctional and misfolded proteins is a characteristic of physiological ageing and age-related diseases, especially neurodegenerative diseases such as Alzheimer's and Parkinson's [@Klaips2018]. Improvement of proteostasis through experimental interventions delayed ageing in mammals [@Zhang2008]. 
 
-### Antagonistic Hallmarks
+### Antagonistic hallmarks
 
 This category involves hallmarks that might have positive or negative effects depending on the intensity. They generally occur as a response to the primary hallmarks, and when their amplitude or duration is excess, they result in pathological consequences. 
 
@@ -60,13 +60,11 @@ This category involves hallmarks that might have positive or negative effects de
 
 **Mitochondrial dysfunction:** Ageing-related accumulation of ROS, and mutations in the mitochondrial DNA result in the disruption of the energy metabolism and decreased ATP availability [@Green2011; @Kauppila2017]. A limited amount of ROS was observed to trigger mitohormesis, a process that prevents further damage. Thus, while a small amount of ROS can activate protective mechanisms, the excess can disrupt energy metabolism [@Balaban2005].
 
-
-
 **Cellular senescence:** Broadly, cellular senescence can be defined as cell cycle arrest upon various triggers, such as telomere attrition and oncogene activation [@Campisi2007]. Cellular senescence prevents the accumulation of damaged cells by preventing further divisions. However, the senescent cells also secrete various proinflammatory molecules (senescence-associated secretory phenotype, SASP), that in turn cause neighbouring cells to become senescent [@Rodier2011]. Because it prevents nonfunctional cells from dividing and accumulating, inducing cellular senescence in modest levels may improve lifespan [@Matheu2009]. However, eliminating the senescent cells that accumulate with age also extends lifespan [@Childs2017]. 
 
 
 
-### Integrative Hallmarks
+### Integrative hallmarks
 
 These are the results of the previously mentioned hallmarks. They induce system-level changes and result in an overall ageing phenotype that causes a decline in the organism's functional capacity. 
 
