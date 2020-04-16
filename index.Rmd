@@ -52,8 +52,8 @@ knitr::opts_chunk$set(echo = F, cache=T, message=F, warning=F, tidy=TRUE,
 <!-- makeindex thesis.nlo -s nomencl.ist -o thesis.nls -->
 
 \nomenclature[A]{ROS}{Reactive Oxygen Species}
-\nomenclature[A]{AP}{Antagonistic Pleiotropy Theory of Aging}
-\nomenclature[A]{MA}{Mutation Accumulation Theory of Aging}
+\nomenclature[A]{AP}{Antagonistic Pleiotropy Theory of Ageing}
+\nomenclature[A]{MA}{Mutation Accumulation Theory of Ageing}
 \nomenclature[A]{SASP}{Senescence-Associated Secretory Phenotype}
 \nomenclature[A]{ITP}{NIA Interventions Testing Program}
 \nomenclature[A]{DR}{Dietary Restriction}
