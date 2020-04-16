@@ -19,7 +19,7 @@ degreetitle: Philosophy of Science
 college: Darwin College
 dept: European Bioinformatics Institute (EMBL-EBI)
 university: University of Cambridge
-dedication: Anne ve anneanneme, her zaman yanımdaydılar ve bugün bu tezi yazabiliyor olmamı onlara borçluyum...
+dedication: Anne ve anneanneme, her zaman yanımdaydılar ve bugün bu tezi yazabiliyor olmayı onlara borçluyum...
 acknowledgements: |
   `r if(knitr:::is_latex_output()) paste(readLines("acknowledgements.txt"), collapse = '\n  ')`
 declaration:  |
