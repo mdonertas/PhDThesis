@@ -100,7 +100,7 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS22.png")
 knitr::include_graphics(path = "figures/heterogeneity/FigureS23.png")
 ```
 
-```{r hetFigS24,out.width = '85%', fig.cap=c("a) The change in cell-type proportions with age in different datasets (beta values from a linear model between cell-type proportions and age in fourth root scale), b) The change in cell-type proportions based on the 147 genes that become more heterogeneous with age during ageing, c) The change in cell-type heterogeneity with age (correlation between the absolute value of residuals from the linear model and age), d) The change in cell-type heterogeneity with age, calculated only using the 147 genes."), fig.scap="The change in cell-type proportions and heterogeneities with age in different datasets."}
+```{r hetFigS24,out.width = '85%', fig.cap=c("The relationship between the age-related changes in gene expression (b values) and changes in heterogeneity (r values). The y-axis shows the Spearman’s correlation coefficients, while different periods are in the x-axis. Facets show different trends in expression changes: up-down: up- regulation in development and down-regulation in aging; down-up: down-regulation in development and up-regulation in aging; up-up: up-regulation in development and up-regulation in aging; down-down: down-regulation in development and down-regulation in aging."), fig.scap="The relationship between the age-related changes in gene expression and changes in heterogeneity."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS24.png")
 ```
 
@@ -116,7 +116,7 @@ knitr::include_graphics(path = "figures/heterogeneity/FigureS26.png")
 knitr::include_graphics(path = "figures/heterogeneity/FigureS27.png")
 ```
 
-```{r hetFigS28,out.width = '100%', fig.cap=c("a) The change in cell-type proportions with age in different datasets (beta values from a linear model between cell-type proportions and age in fourth root scale), b) The change in cell-type proportions based on the 147 genes that become more heterogeneous with age during ageing, c) The change in cell-type heterogeneity with age (correlation between the absolute value of residuals from the linear model and age), d) The change in cell-type heterogeneity with age, calculated only using the 147 genes."), fig.scap="The change in cell-type proportions and heterogeneities with age in different datasets."}
+```{r hetFigS28,out.width = '100%', fig.cap=c("Genes showing significant difference (FDR corrected p < 0.05) in expression trajectories between males and females. Two sample Wilcoxon test was performed using residual values to determine if the distribution of residuals differs between different sexes. (a) Number of genes showing significant difference in each dataset. (b) Number of datasets in which the genes show significant difference. In total, 15/147 genes show significant change in at least one dataset."), fig.scap="Sex-specific genes in different datasets."}
 knitr::include_graphics(path = "figures/heterogeneity/FigureS28.png")
 ```
 

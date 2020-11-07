@@ -1,3 +1,6 @@
+\textbf{Title: Computational studies on ageing and age-related diseases}
+\vspace{0.3cm}
+
 Age is the major risk factor for a variety of non-communicable diseases. As life expectancy increases, ageing poses significant challenges to the individual, society, and healthcare systems. Ageing is a complex process involving multiple interconnected cellular and organismal phenotypes. Thus, understanding the molecular mechanisms and finding potential interventions is challenging and requires systems-level approaches. In this PhD I have addressed three main questions about ageing, using high-throughput data and computational methods. 
 \vspace{0.3cm}
 
@@ -8,3 +11,9 @@ My second study focuses on the link between ageing and age-related diseases. Man
 \vspace{0.2cm}
 
 Finally, I followed a systems-level approach to identify drugs that can target ageing in the human brain. Using transcriptome datasets from multiple brain regions, I first identified the gene expression changes that can characterise ageing. Then, compared with the drug-perturbed gene expression profiles in the Connectivity Map, I identified 24 drugs that are significantly associated with the ageing signature. Some of these drugs may function as anti-ageing drugs by reversing the detrimental changes that occur during ageing, others by mimicking the cellular defence mechanisms. The drugs that we identified included a significant number of already identified pro-longevity drugs, indicating that the method can discover de novo drugs that ameliorate ageing.
+
+\vspace{0.6cm}
+\begin{flushright}
+\emph{H. Melike Donertas}
+
+\end{flushright}
